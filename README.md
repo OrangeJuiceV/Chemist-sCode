@@ -1,13 +1,13 @@
 # CHEMIST'S CODE
 
 
-- [LIVELLO 1 - LA TAVOLA PERIODICA](Livello1)
-    - [1° ENIGMA](1Enigma1)
-    - [2° ENIGMA](1Enigma2)
-    - [3° ENIGMA](1Enigma3)
-- [LIVELLO 2 - I LEGAMI CHIMICI](Livello2)
-    - [1° ENIGMA](2Enigma1)
-    - [2° ENIGMA](2Enigma2)
+- [LIVELLO 1 - LA TAVOLA PERIODICA](#1-livello---la-tavola-periodica)
+    - [1° ENIGMA](#1-enigma--gruppi-elementi)
+    - [2° ENIGMA](#2-enigma)
+    - [3° ENIGMA](#3-enigma)
+- [LIVELLO 2 - I LEGAMI CHIMICI](#2-livello---i-legami-chimiciLivello2)
+    - [1° ENIGMA](#1-enigma)
+    - [2° ENIGMA](#2-enigma-1)
     - [3° ENIGMA](2Enigma3)
 - [LIVELLO 3 - LE REAZIONI CHIMICHE](Livello3)
     - [1° ENIGMA](3Enigma1)
@@ -34,7 +34,7 @@ Una volta selezionata l’opzione Avvia partita, il gioco si articolerà in tre 
 - 3° Livello – Le Reazioni Chimiche
  Sfide incentrate sul bilanciamento delle equazioni e sul riconoscimento dei principali tipi di reazioni.
 
-## 1° LIVELLO - LA TAVOLA PERIODICA
+## 1° LIVELLO - LA TAVOLA PERIODICA 
 ### Stanza n°1
 All’inizio del primo livello, il chimico si risveglia in una piccolo ufficio, confuso e disorientato.
 Davanti a sé trova una tavola periodica incompleta, mancante di cinque elementi fondamentali (elio, calcio, oro, ferro, ossigeno). Il giocatore potrà consultarla in qualsiasi momento premendo il tasto M. Per poter proseguire e uscire dalla stanza, sarà necessario completare la tavola e utilizzarla come strumento per risolvere una serie di enigmi. Solo così si potrà sbloccare la porta d’uscita e accedere all’area successiva del laboratorio.
