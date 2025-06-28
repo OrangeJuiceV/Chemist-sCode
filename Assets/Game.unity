@@ -34864,7 +34864,7 @@ Light:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1371212683}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -49164,6 +49164,7 @@ MonoBehaviour:
   dialogueBox: {fileID: 85233611}
   dialogueText: {fileID: 1629629282}
   dialogueLines: []
+  fpc: {fileID: 1147224175}
 --- !u!1 &1855066532
 GameObject:
   m_ObjectHideFlags: 0

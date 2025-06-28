@@ -10,6 +10,10 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI dialogueText;
     public List<string> dialogueLines;
 
+    public FirstPersonController fpc; // Reference to your first person controller
+
+    private bool wereStuck = false;
+
     private int currentLineIndex = 0;
     private bool isDialogueActive = false;
 
@@ -33,6 +37,19 @@ public class DialogueManager : MonoBehaviour
         dialogueBox.SetActive(true);
         isDialogueActive = true;
         ShowLine();
+
+        if (fpc.cameraCanMove)
+        {
+            fpc.setIsWalking(false);
+            fpc.changeActive();
+            fpc.cameraCanMove = false;
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        else 
+        {
+            wereStuck = true;
+        }
     }
 
     void ShowLine()
@@ -58,6 +75,13 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
+        if (!wereStuck) 
+        {
+            fpc.changeActive();
+            fpc.cameraCanMove = true;
+            Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;
+        }
         dialogueBox.SetActive(false);
         isDialogueActive = false;
     }
