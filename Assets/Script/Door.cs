@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Door : MonoBehaviour, IInteractable
@@ -17,6 +18,8 @@ public class Door : MonoBehaviour, IInteractable
     private const float SLIDING_OPEN = - 1.21f;
     private const float SLIDING_CLOSED = 0.0f;
     private float slidingOpeningSpeed = 2.0f; // Velocità di apertura per porte scorrevoli
+
+    public DialogueManager dialogueManager; // Aggiunto per gestire il dialogo quando  la porta è bloccata
 
     void Start()
     {
@@ -107,7 +110,14 @@ public class Door : MonoBehaviour, IInteractable
 
     public virtual void Interact()
     {
-        if (isLocked) return;
+        if (isLocked)
+        {
+            dialogueManager.StartDialogue(new List<string>
+            {
+                "La porta è bloccata!, trova un modo per aprirla"
+            });
+            return;
+        }
         if (!isMoving)
         {
             isMoving = true;
