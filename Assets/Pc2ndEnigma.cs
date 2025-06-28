@@ -11,13 +11,31 @@ public class Pc2ndEnigma : MonoBehaviour, IInteractable
     public Sprite NoKnight;
     public Sprite OneKnight;
     public Sprite TwoKnight;
-
+    private bool initialized;
     private List<Image> buttonImages = new List<Image>();
     private List<int> buttonStates = new List<int>();
 
+    public Button confirmButton; // Bottone di conferma
+
+    // soluzioni
+
+    private List<int[]> solutions = new List<int[]>
+    {
+        new int[] { 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0, 
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}, // soluzione potassio, numero atomico 19
+        new int[] { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+                    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0} // soluzione ossigeno
+    };
+
+    private int currentSolution;
+
     void Start()
     {
-        InitButtons();
+        initialized = false;
+        currentSolution = 0;
+        confirmButton.onClick.AddListener(CheckSolution);
     }
 
     void Update()
@@ -31,6 +49,16 @@ public class Pc2ndEnigma : MonoBehaviour, IInteractable
     public virtual void Interact()
     {
         schermata.SetActive(true);
+
+        Transform pcContent = transform.GetChild(1);
+        pcContent.gameObject.SetActive(true); // ATTIVA il contenitore prima di inizializzare i bottoni
+
+        if (!initialized)
+        {
+            InitButtons();
+            initialized = true;
+        }
+
         fpc.setIsWalking(false);
         fpc.changeActive();
         fpc.cameraCanMove = false;
@@ -38,6 +66,7 @@ public class Pc2ndEnigma : MonoBehaviour, IInteractable
         Cursor.visible = true;
         imUsing = true;
     }
+
 
     public void ExitInteraction()
     {
@@ -53,12 +82,17 @@ public class Pc2ndEnigma : MonoBehaviour, IInteractable
     {
         buttonImages.Clear();
         buttonStates.Clear();
+        Debug.Log($"Numero bottoni raccolti: {buttonStates.Count}");
+        Debug.Log($"Dimensione soluzione attuale: {solutions[currentSolution].Length}");
+
 
         Transform pcContent = transform.GetChild(1); // 0 = PC, 1 = pcContent
         Button[] buttons = pcContent.GetComponentsInChildren<Button>();
 
         foreach (Button btn in buttons)
         {
+            if (btn.name == "ConfirmButton") continue; //  SALTA il bottone di conferma
+
             Image img = btn.GetComponent<Image>();
             if (img != null)
             {
@@ -73,6 +107,7 @@ public class Pc2ndEnigma : MonoBehaviour, IInteractable
 
         Debug.Log($"Trovati {buttonImages.Count} bottoni con Image.");
     }
+
 
     private void OnButtonClick(int index)
     {
@@ -92,4 +127,37 @@ public class Pc2ndEnigma : MonoBehaviour, IInteractable
                 break;
         }
     }
+
+    private void CheckSolution()
+    {
+        int[] currentState = buttonStates.ToArray();
+        int[] expected = solutions[currentSolution];
+
+        if (AreArraysEqual(currentState, expected))
+        {
+            Debug.Log("Soluzione corretta!");
+
+            // Se vuoi passare alla prossima soluzione (opzionale):
+            if (currentSolution < solutions.Count - 1)
+            {
+                currentSolution++;
+                Debug.Log("Avanzato alla prossima soluzione.");
+            }
+        }
+        else
+        {
+            Debug.Log("Soluzione errata.");
+        }
+    }
+
+    private bool AreArraysEqual(int[] a, int[] b)
+    {
+        if (a.Length != b.Length) return false;
+        for (int i = 0; i < a.Length; i++)
+        {
+            if (a[i] != b[i]) return false;
+        }
+        return true;
+    }
+
 }
