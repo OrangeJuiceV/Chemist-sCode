@@ -17,6 +17,9 @@ public class Pc2ndEnigma : MonoBehaviour, IInteractable
 
     public Button confirmButton; // Bottone di conferma
 
+    public DeskDrawers drawer; // cassetto da sbloccare
+    public DialogueManager dialogueManager; // per gestire il dialogo quando l'enigma è risolto
+
     // soluzioni
 
     private readonly List<int[]> solutions = new List<int[]>
@@ -143,6 +146,17 @@ public class Pc2ndEnigma : MonoBehaviour, IInteractable
                 currentSolution++;
                 Debug.Log("Avanzato alla prossima soluzione.");
             }
+
+            // Sblocca il cassetto, per ora solo 1 risposta per farlo
+            drawer.isLocked = false;
+           dialogueManager.StartDialogue(new List<string>
+            {
+                "Enigma risolto!",
+                "Il cassetto si sblocca..."
+            });
+            // Esegui azioni per completamento enigma (suoni, animazioni, ecc.)
+            ExitInteraction(); // Chiude l'interazione con il PC
+
         }
         else
         {

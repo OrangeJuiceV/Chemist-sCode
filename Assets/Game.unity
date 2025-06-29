@@ -47380,6 +47380,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1147224175}
     - target: {fileID: 3732575931395059354, guid: a5ac041b79f79364ca8481b503332787, type: 3}
+      propertyPath: drawer
+      value: 
+      objectReference: {fileID: 1324327220}
+    - target: {fileID: 3732575931395059354, guid: a5ac041b79f79364ca8481b503332787, type: 3}
       propertyPath: NoKnight
       value: 
       objectReference: {fileID: 2785227220335226163, guid: 8bed2b3998e1f864f896e2cf74225f44, type: 3}
@@ -47395,6 +47399,10 @@ PrefabInstance:
       propertyPath: confirmButton
       value: 
       objectReference: {fileID: 1785362759}
+    - target: {fileID: 3732575931395059354, guid: a5ac041b79f79364ca8481b503332787, type: 3}
+      propertyPath: dialogueManager
+      value: 
+      objectReference: {fileID: 1853611805}
     - target: {fileID: 4191761070576162638, guid: a5ac041b79f79364ca8481b503332787, type: 3}
       propertyPath: m_Layer
       value: 6
