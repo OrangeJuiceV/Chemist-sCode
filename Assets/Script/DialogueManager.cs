@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using Unity.VisualScripting;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -10,16 +9,16 @@ public class DialogueManager : MonoBehaviour
     public TextMeshProUGUI dialogueText;
     public List<string> dialogueLines;
 
-    public FirstPersonController fpc; // Reference to your first person controller
-
-    private bool wereStuck = false;
+    public FirstPersonController fpc; // Riferimento al controller del personaggio
 
     private int currentLineIndex = 0;
     private bool isDialogueActive = false;
 
+    private bool wasCameraMoving = true; // Salva lo stato originale
+
     void Start()
     {
-        dialogueBox.SetActive(false); // nasconde all'avvio
+        dialogueBox.SetActive(false); // Nasconde la finestra di dialogo all'avvio
     }
 
     void Update()
@@ -38,17 +37,17 @@ public class DialogueManager : MonoBehaviour
         isDialogueActive = true;
         ShowLine();
 
-        if (fpc.cameraCanMove)
+        // Salva lo stato attuale del movimento della camera
+        wasCameraMoving = fpc.cameraCanMove;
+
+        // Disattiva movimento e blocca visuale solo se era attiva
+        if (wasCameraMoving)
         {
             fpc.setIsWalking(false);
             fpc.changeActive();
             fpc.cameraCanMove = false;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-        }
-        else 
-        {
-            wereStuck = true;
         }
     }
 
@@ -75,13 +74,15 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
-        if (!wereStuck) 
+        // Ripristina il controllo solo se era attivo prima del dialogo
+        if (wasCameraMoving)
         {
             fpc.changeActive();
             fpc.cameraCanMove = true;
             Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;
         }
+
         dialogueBox.SetActive(false);
         isDialogueActive = false;
     }

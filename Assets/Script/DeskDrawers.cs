@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class DeskDrawers : MonoBehaviour, IInteractable
 {
@@ -9,6 +10,8 @@ public class DeskDrawers : MonoBehaviour, IInteractable
     private const float OPEN_X = 0.328f;
     private float speed = 1f; // velocità movimento in unità al secondo
 
+    public DialogueManager dialogueManager;
+    
     void Update()
     {
         if (isMoving)
@@ -45,6 +48,13 @@ public class DeskDrawers : MonoBehaviour, IInteractable
         if (!isMoving && !isLocked)
         {
             isMoving = true; // Inizia il movimento (apertura o chiusura)
+        }
+        else
+        {
+            dialogueManager.StartDialogue(new List<string>{
+                "Il cassetto è bloccato",
+                "Trova un modo per sbloccarlo"
+            });
         }
     }
 }
