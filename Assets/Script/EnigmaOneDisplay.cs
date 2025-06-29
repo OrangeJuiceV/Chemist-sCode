@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +16,8 @@ public class EnigmaOneDisplay : MonoBehaviour, IInteractable
     private GameObject[] childrenButtons;
     public FirstPersonController fpc;
     private bool[] solution = {true,true,false,false,false,false,true,false,true};
+
+    public DialogueManager dialogueManager; // Aggiunto per gestire il dialogo quando l'enigma è risolto
 
     // This Enigma unlocks a door
     public Door doorClass;
@@ -72,12 +75,18 @@ public class EnigmaOneDisplay : MonoBehaviour, IInteractable
         {
             Debug.Log("Enigma risolto!");
             // Esegui azioni per completamento enigma (suoni, animazioni, ecc.)
+            dialogueManager.StartDialogue(new List<string>
+            {
+                "Enigma risolto!",
+                "La porta si sblocca..."
+            });
             doorClass.isLocked = false;
             Quit();
         }
         else
         {
             Debug.Log("Risposta errata.");
+            dialogueManager.StartDialogue(new List<string> { "Risposta errata, riprova." });
         }
     }
 

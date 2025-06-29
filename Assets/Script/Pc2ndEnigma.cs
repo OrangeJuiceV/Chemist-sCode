@@ -19,7 +19,7 @@ public class Pc2ndEnigma : MonoBehaviour, IInteractable
 
     // soluzioni
 
-    private List<int[]> solutions = new List<int[]>
+    private readonly List<int[]> solutions = new List<int[]>
     {
         new int[] { 2, 2, 2, 2, 2, 2, 2, 2, 2, 1, 0, 0, 0, 0, 
                     0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
