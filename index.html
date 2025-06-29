@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chemist'sCode</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f8f9fa;
+      color: #212529;
+      max-width: 960px;
+      margin: 40px auto;
+      padding: 30px 40px;
+      box-shadow: 0 3px 12px rgb(0 0 0 / 0.1);
+      border-radius: 10px;
+    }
+
+    h1, h2 {
+      color: #0d3b66;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      text-align: center;
+      letter-spacing: 1px;
+    }
+
+    p {
+      line-height: 1.6;
+      font-size: 1.1rem;
+      margin-bottom: 1.5rem;
+      color: #495057;
+    }
+
+    hr {
+      border: none;
+      height: 1.5px;
+      background-color: #0d3b66;
+      margin: 2.5rem 0;
+      border-radius: 2px;
+      max-width: 100px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    a img {
+      transition: transform 0.3s ease, filter 0.3s ease;
+      cursor: pointer;
+      filter: grayscale(100%);
+      display: block;
+      margin: 0 auto;
+    }
+
+    a img:hover {
+      filter: none;
+      transform: scale(1.1);
+    }
+
+    .slider-container {
+      position: relative;
+      max-width: 860px;
+      margin: 20px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    #slider-image {
+      width: 100%;
+      max-width: 860px;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      display: block;
+    }
+
+    #next-btn {
+      position: absolute;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%);
+      background-color: rgba(13,59,102,0.7);
+      border: none;
+      color: white;
+      font-size: 1.8rem;
+      padding: 8px 12px;
+      border-radius: 50%;
+      cursor: pointer;
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+
+    #next-btn:hover {
+      background-color: rgba(13,59,102,0.9);
+    }
+  </style>
+</head>
+<body>
+  <h1>CHEMIST'S CODE</h1>
+
+  <h2>Progetto Github</h2>
+  <a href="https://github.com/OrangeJuiceV/Chemist-sCode" target="_blank">
+    <img src="github.png" alt="github" width="50" height="50" />
+  </a>
+
+  <div class="slider-container">
+    <img id="slider-image" src="foto1.png" alt="Foto 1" />
+    <button id="next-btn" aria-label="Prossima immagine">▶</button>
+  </div>
+
+  <h2>Download diretto</h2>
+  <div style="text-align: center;">
+    <a href="documentation.pdf" download>Scarica il gioco</a>
+  </div>
+
+  
+  <hr />
+
+  <h2>Sviluppatori</h2>
+  <p>
+    <strong>Claudio di Pietro</strong> - 111111<br>
+    Ricerca asset, Progettazione level design, Ricerca e sviluppo di 
+    musiche e suoni, Strutturazione materiale testuale, Sviluppo delle impostazioni.
+    <br><br>
+    <strong>Giuseppe Pio Fallucca</strong> - 782111<br>
+    Ricerca asset, Sviluppo meccaniche fondamentali, 
+    Strutturazione materiale testuale, Sviluppo dei menu di gioco, test e revisioni.
+  </p>
+
+  <script>
+    (function() {
+      const images = ['foto1.png', 'foto2.png', 'foto3.png'];
+      let currentIndex = 0;
+
+      const sliderImage = document.getElementById('slider-image');
+      const nextBtn = document.getElementById('next-btn');
+
+      nextBtn.addEventListener('click', () => {
+        currentIndex = (currentIndex + 1) % images.length;
+        sliderImage.src = images[currentIndex];
+        sliderImage.alt = `Foto ${currentIndex + 1}`;
+      });
+    })();
+  </script>
+</body>
+</html>
