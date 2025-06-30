@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: c9091e9800e22e845a02ede5533e7c59
+guid: 3e7166cc07136c34a8534ed4789d0a80
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2372505310371413758
-    second: enigma1_0
+      213: 3005521138905023554
+    second: Enigma2_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -113,13 +113,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: enigma1_0
+      name: Enigma2_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 686
-        height: 804
+        width: 1920
+        height: 1080
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +128,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 20185938dfa231fd0800000000000000
-      internalID: -2372505310371413758
+      spriteID: 2448c594d81c5b920800000000000000
+      internalID: 3005521138905023554
       vertices: []
       indices: 
       edges: []
@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      Enigma2_0: 3005521138905023554
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
