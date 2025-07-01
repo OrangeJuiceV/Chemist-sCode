@@ -388,24 +388,39 @@
 
     function handleVerticalSwipe() {
       const deltaY = touchStartY - touchEndY;
+      const activeSection = sections[currentSection];
+
+      if (!activeSection) return;
+
+      // Controllo se la sezione è scrollabile verticalmente
+      const scrollTop = activeSection.scrollTop;
+      const scrollHeight = activeSection.scrollHeight;
+      const clientHeight = activeSection.clientHeight;
+
+      // Se la sezione non è scrollabile o è completamente scrollata in cima o in fondo
+      const canScrollUp = scrollTop > 0;
+      const canScrollDown = scrollTop + clientHeight < scrollHeight;
 
       // soglia per swipe verticale
       if (Math.abs(deltaY) > 50) {
         if (deltaY > 0) {
           // swipe verso l'alto = scroll verso il basso (vai avanti se possibile)
-          if (currentSection < tubes.length - 1) {
+          // cambio sezione solo se non si può più scrollare giù (cioè siamo al fondo)
+          if (!canScrollDown && currentSection < tubes.length - 1) {
             currentSection++;
             tubes[currentSection].click();
           }
         } else {
           // swipe verso il basso = scroll verso l'alto (vai indietro se possibile)
-          if (currentSection > 0) {
+          // cambio sezione solo se non si può più scrollare su (cioè siamo in cima)
+          if (!canScrollUp && currentSection > 0) {
             currentSection--;
             tubes[currentSection].click();
           }
         }
       }
     }
+
 
 
     // Gestione slider immagini nella prima sezione
