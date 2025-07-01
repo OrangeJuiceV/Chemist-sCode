@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="it">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,7 +11,7 @@
     body {
       font-family: 'Roboto', sans-serif;
       background-color: #f8f9fa;
-      color: #212529;
+      color: #0d3b66;
       max-width: 960px;
       margin: 40px auto;
       padding: 30px 40px;
@@ -18,19 +19,30 @@
       border-radius: 10px;
     }
 
-    h1, h2 {
+    h1,
+    h2,
+    h3 {
       color: #0d3b66;
       font-weight: 700;
-      margin-bottom: 1rem;
       text-align: center;
       letter-spacing: 1px;
+      margin-bottom: 1rem;
+    }
+
+    h3 {
+      font-size: 1.5em;
+      margin-top: 2rem;
     }
 
     p {
       line-height: 1.6;
       font-size: 1.1rem;
       margin-bottom: 1.5rem;
-      color: #495057;
+      color: #0d3b66;
+    }
+
+    li {
+      color: #0d3b66;
     }
 
     hr {
@@ -42,6 +54,10 @@
       max-width: 100px;
       margin-left: auto;
       margin-right: auto;
+    }
+
+    a {
+      color: #0d3b66;
     }
 
     a img {
@@ -70,7 +86,7 @@
       width: 100%;
       max-width: 860px;
       border-radius: 8px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
       display: block;
     }
 
@@ -79,7 +95,7 @@
       top: 50%;
       right: 10px;
       transform: translateY(-50%);
-      background-color: rgba(13,59,102,0.7);
+      background-color: rgba(13, 59, 102, 0.7);
       border: none;
       color: white;
       font-size: 1.8rem;
@@ -91,12 +107,52 @@
     }
 
     #next-btn:hover {
-      background-color: rgba(13,59,102,0.9);
+      background-color: rgba(13, 59, 102, 0.9);
     }
   </style>
 </head>
+
 <body>
-  <h1>CHEMIST'S CODE</h1>
+  <h1>THE CHEMIST'S CODE</h1>
+  <h2>Un Serious Game per imparare le basi della Chimica</h2>
+  <hr>
+
+  <div class="slider-container">
+    <img id="slider-image" src="docs/foto1.png" alt="Foto 1" />
+    <button id="next-btn" aria-label="Prossima immagine">▶</button>
+  </div>
+
+  <hr>
+
+  <section id="about-game" style="max-width: 800px; margin: auto; padding: 2rem;">
+    <p>
+      <strong>The Chemist’s Code</strong> è un <em>serious game</em> educativo pensato per introdurre
+      studenti e appassionati ai concetti fondamentali della chimica attraverso un’esperienza immersiva e interattiva.
+    </p>
+    <p>
+      Entra nei panni di un chimico che, a seguito di un misterioso incidente nel laboratorio, ha perso la memoria e si
+      ritrova rinchiuso in un ambiente abbandonato. Per recuperare le sue conoscenze e fuggire, dovrà esplorare stanze,
+      trovare indizi e risolvere enigmi legati alla chimica.
+    </p>
+    <p>
+      Il gioco si sviluppa come una escape room virtuale articolata in tre livelli, ciascuno dedicato a un tema chiave:
+      <strong>la tavola periodica</strong>, <strong>i legami chimici</strong> e <strong>le reazioni chimiche</strong>.
+    </p>
+    <p>
+      Solo risolvendo i puzzle e ricostruendo il proprio passato scientifico, il protagonista potrà riconquistare la
+      libertà… e la sua identità.
+    </p>
+
+    <h3>📚 Livelli di gioco</h3>
+    <ul>
+      <li>🧭 <strong>Livello 1</strong> – La Tavola Periodica: esplora simboli, gruppi, periodi e proprietà degli
+        elementi.</li>
+      <li>🔗 <strong>Livello 2</strong> – I Legami Chimici: studia valenze, legami ionici e legami covalenti tra atomi.
+      </li>
+      <li>⚗️ <strong>Livello 3</strong> – Le Reazioni Chimiche: riconosci tipi di reazione e bilancia equazioni
+        chimiche.</li>
+    </ul>
+  </section>
 
   <hr>
 
@@ -106,33 +162,27 @@
   </a>
 
   <hr>
-  
-  <div class="slider-container">
-    <img id="slider-image" src="docs/foto1.png" alt="Foto 1" />
-    <button id="next-btn" aria-label="Prossima immagine">▶</button>
-  </div>
 
   <h2>Download diretto</h2>
   <div style="text-align: center;">
     <a href="docs/documentation.pdf" download>Scarica il gioco</a>
   </div>
 
-  
-  <hr />
+  <hr>
 
   <h2>Sviluppatori</h2>
   <p>
     <strong>Claudio di Pietro</strong> - 111111<br>
-    Ricerca asset, Progettazione level design, Ricerca e sviluppo di 
+    Ricerca asset, Progettazione level design, Ricerca e sviluppo di
     musiche e suoni, Strutturazione materiale testuale, Sviluppo delle impostazioni.
     <br><br>
     <strong>Giuseppe Pio Fallucca</strong> - 782111<br>
-    Ricerca asset, Sviluppo meccaniche fondamentali, 
+    Ricerca asset, Sviluppo meccaniche fondamentali,
     Strutturazione materiale testuale, Sviluppo dei menu di gioco, test e revisioni.
   </p>
 
   <script>
-    (function() {
+    (function () {
       const images = ['docs/foto1.png', 'docs/foto2.png', 'docs/foto3.png'];
       let currentIndex = 0;
 
@@ -147,10 +197,15 @@
     })();
   </script>
 
+  <hr>
+
   <p style="font-size: 0.65rem; text-align: center; color: #666; margin-top: 40px;">
-  Questo sito non raccoglie né memorizza dati personali. Tuttavia, carica un font da Google Fonts, che potrebbe raccogliere dati tecnici come l'indirizzo IP. Nessun altro cookie o tracciamento viene effettuato. <br>
-  Per maggiori informazioni, visita la <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy di Google</a>.
+    Questo sito non raccoglie né memorizza dati personali. Tuttavia, carica un font da Google Fonts, che potrebbe
+    raccogliere dati tecnici come l'indirizzo IP. Nessun altro cookie o tracciamento viene effettuato. <br>
+    Per maggiori informazioni, visita la <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy di
+      Google</a>.
   </p>
 
 </body>
+
 </html>
