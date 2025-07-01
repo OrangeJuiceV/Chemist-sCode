@@ -24,8 +24,7 @@
       margin: 0;
       padding: 0;
       overflow-x: hidden;
-      /* Disabilito scroll verticale pagina per evitare spazi extra */
-      overflow-y: hidden;
+      overflow-y: auto; /* riattivato scroll verticale */
     }
 
     /* Header fisso */
@@ -89,11 +88,10 @@
       margin: 0 auto 40px auto;
       padding: 20px 40px;
       box-sizing: border-box;
-      height: 80vh;
-      /* Altezza fissa per evitare scroll pagina */
+      /* altezza e overflow rimossi per scroll pagina */
+      /* height: 80vh; */
+      /* overflow: hidden; */
       position: relative;
-      overflow: hidden;
-      /* Nasconde scroll pagina */
     }
 
     section {
@@ -104,22 +102,14 @@
       padding: 25px;
       opacity: 0;
       transition: opacity 0.5s ease;
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      min-width: 800px;
-      min-height: 400px;
-      /* niente scroll di default */
+      position: relative;
+      max-height: 80vh;
+      overflow-y: auto; /* sezione scrollabile */
     }
 
     section.active {
       display: block;
       opacity: 1;
-      position: relative;
-      /* per scroll interno */
-      overflow-y: auto;
     }
 
     hr {
@@ -337,72 +327,103 @@
         tube.setAttribute('aria-selected', 'true');
         tube.setAttribute('tabindex', '0');
         sections[index].classList.add('active');
-        sections[index].focus();
-
+        sections[index].scrollTop = 0; // scrolla in cima alla sezione
         currentSection = index;
+      });
+
+      // Supporto tastiera per tab e invio/spazio
+      tube.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          tube.click();
+        }
       });
     });
 
-    // Variabile indice sezione attiva
     let currentSection = 0;
 
-    // Event listener scroll mouse per cambiare sezione
+    // Scroll con la rotellina solo se scroll sezione raggiunge limite
     window.addEventListener('wheel', (e) => {
-      if (e.deltaY > 0) {
-        if (currentSection < tubes.length - 1) {
+      const activeSection = sections[currentSection];
+      if (!activeSection) return;
+
+      const atBottomSection = activeSection.scrollTop + activeSection.clientHeight >= activeSection.scrollHeight - 1;
+      const atTopSection = activeSection.scrollTop <= 0;
+
+      // Scroll document
+      const scrollY = window.scrollY || window.pageYOffset;
+      const windowHeight = window.innerHeight;
+      const bodyHeight = document.body.scrollHeight;
+
+      const atBottomPage = (scrollY + windowHeight) >= (bodyHeight - 1);
+      const atTopPage = scrollY <= 0;
+
+      if (e.deltaY > 0) { // scroll verso il basso
+        if (atBottomSection && atBottomPage && currentSection < tubes.length - 1) {
           currentSection++;
           tubes[currentSection].click();
+          e.preventDefault();
         }
-      } else if (e.deltaY < 0) {
-        if (currentSection > 0) {
+      } else if (e.deltaY < 0) { // scroll verso l'alto
+        if (atTopSection && atTopPage && currentSection > 0) {
           currentSection--;
+          tubes[currentSection].click();
+          e.preventDefault();
+        }
+      }
+    }, { passive: false });
+
+
+    // Swipe touch per cambiare sezione (orizzontale)
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    window.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    });
+
+    window.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleGesture();
+    });
+
+    function handleGesture() {
+      if (touchEndX < touchStartX - 50) { // swipe sinistra -> avanti se possibile
+        if (currentSection < tubes.length - 1) {
+          currentSection++;
           tubes[currentSection].click();
         }
       }
-    }, { passive: true });
-
-    // Slider immagini nella sezione 0
-    const sliderImages = ['docs/foto1.png', 'docs/foto2.png', 'docs/foto3.png'];
-    let sliderIndex = 0;
-    const sliderImageElement = document.getElementById('slider-image');
-    const nextBtn = document.getElementById('next-btn');
-
-    nextBtn.addEventListener('click', () => {
-      sliderIndex = (sliderIndex + 1) % sliderImages.length;
-      sliderImageElement.src = sliderImages[sliderIndex];
-      sliderImageElement.alt = `Foto ${sliderIndex + 1}`;
-    });
-
-    // Swipe touch su mobile per cambiare sezione
-    let touchStartY = 0;
-    let touchEndY = 0;
-
-    window.addEventListener('touchstart', (e) => {
-      touchStartY = e.changedTouches[0].screenY;
-    }, { passive: true });
-
-    window.addEventListener('touchend', (e) => {
-      touchEndY = e.changedTouches[0].screenY;
-      handleGesture();
-    }, { passive: true });
-
-    function handleGesture() {
-      const swipeThreshold = 50; // distanza minima swipe in pixel
-
-      if (touchStartY - touchEndY > swipeThreshold) {
-        // Swipe verso l'alto → sezione successiva
-        if (currentSection < tubes.length - 1) {
-          currentSection++;
-          tubes[currentSection].click();
-        }
-      } else if (touchEndY - touchStartY > swipeThreshold) {
-        // Swipe verso il basso → sezione precedente
+      if (touchEndX > touchStartX + 50) { // swipe destra -> indietro se possibile
         if (currentSection > 0) {
           currentSection--;
           tubes[currentSection].click();
         }
       }
     }
+
+    // Gestione slider immagini nella prima sezione
+    const sliderImages = [
+      'docs/foto1.png',
+      'docs/foto2.png',
+      'docs/foto3.png',
+      'docs/foto4.png',
+      'docs/foto5.png',
+      'docs/foto6.png',
+      'docs/foto7.png',
+      'docs/foto8.png',
+    ];
+
+    let currentImageIndex = 0;
+
+    const sliderImageElement = document.getElementById('slider-image');
+    const nextButton = document.getElementById('next-btn');
+
+    nextButton.addEventListener('click', () => {
+      currentImageIndex = (currentImageIndex + 1) % sliderImages.length;
+      sliderImageElement.src = sliderImages[currentImageIndex];
+      sliderImageElement.alt = `Foto ${currentImageIndex + 1}`;
+    });
   </script>
 </body>
 
