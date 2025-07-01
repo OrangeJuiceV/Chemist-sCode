@@ -8,41 +8,118 @@
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 
+    html,
     body {
-      font-family: 'Roboto', sans-serif;
-      background-color: #f8f9fa;
-      color: #0d3b66;
-      max-width: 960px;
-      margin: 40px auto;
-      padding: 30px 40px;
-      box-shadow: 0 3px 12px rgb(0 0 0 / 0.1);
-      border-radius: 10px;
+      height: 100%;
+      margin: 0;
+      padding: 0;
     }
 
-    h1,
-    h2,
-    h3 {
+    body {
+      display: flex;
+      flex-direction: column;
+      font-family: 'Roboto', sans-serif;
+      background-color: #ebf8e7;
       color: #0d3b66;
-      font-weight: 700;
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+      /* Disabilito scroll verticale pagina per evitare spazi extra */
+      overflow-y: hidden;
+    }
+
+    /* Header fisso */
+    header {
+      position: sticky;
+      top: 0;
+      background-color: #ecfcee;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.15);
+      padding: 15px 20px;
+      z-index: 1000;
+    }
+
+    header h1,
+    header h2 {
+      margin: 0;
       text-align: center;
       letter-spacing: 1px;
-      margin-bottom: 1rem;
+      color: #0d3b66;
     }
 
-    h3 {
-      font-size: 1.5em;
-      margin-top: 2rem;
+    header h1 {
+      font-weight: 700;
+      font-size: 1.8rem;
     }
 
-    p {
-      line-height: 1.6;
+    header h2 {
+      font-weight: 400;
       font-size: 1.1rem;
-      margin-bottom: 1.5rem;
-      color: #0d3b66;
+      margin-top: 4px;
+      margin-bottom: 12px;
     }
 
-    li {
-      color: #0d3b66;
+    /* Container provette */
+    .test-tubes {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      max-width: 720px;
+      margin: 0 auto 15px auto;
+      user-select: none;
+    }
+
+    .test-tubes img {
+      width: 60px;
+      height: auto;
+      filter: grayscale(80%);
+      transition: filter 0.3s ease, transform 0.3s ease, drop-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .test-tubes img.active,
+    .test-tubes img:hover {
+      filter: none;
+      transform: scale(1.2);
+      filter: drop-shadow(0 0 10px #0d3b66);
+    }
+
+    /* Sezioni */
+    main {
+      max-width: 960px;
+      margin: 0 auto 40px auto;
+      padding: 20px 40px;
+      box-sizing: border-box;
+      height: 80vh;
+      /* Altezza fissa per evitare scroll pagina */
+      position: relative;
+      overflow: hidden;
+      /* Nasconde scroll pagina */
+    }
+
+    section {
+      display: none;
+      background-color: white;
+      border-radius: 10px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+      padding: 25px;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      min-width: 800px;
+      min-height: 400px;
+      /* niente scroll di default */
+    }
+
+    section.active {
+      display: block;
+      opacity: 1;
+      position: relative;
+      /* per scroll interno */
+      overflow-y: auto;
     }
 
     hr {
@@ -73,6 +150,37 @@
       transform: scale(1.1);
     }
 
+    ul {
+      padding-left: 20px;
+      color: #0d3b66;
+    }
+
+    p,
+    li {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #0d3b66;
+    }
+
+    /* Footer */
+    footer p {
+      font-size: 0.65rem;
+      text-align: center;
+      color: #666;
+      margin-top: 40px;
+    }
+
+    /* Scrollbar for sections */
+    section::-webkit-scrollbar {
+      width: 8px;
+    }
+
+    section::-webkit-scrollbar-thumb {
+      background-color: #0d3b66;
+      border-radius: 4px;
+    }
+
+    /* Stili container immagini con slider */
     .slider-container {
       position: relative;
       max-width: 860px;
@@ -113,99 +221,189 @@
 </head>
 
 <body>
-  <h1>THE CHEMIST'S CODE</h1>
-  <h2>Un Serious Game per imparare le basi della Chimica</h2>
-  <hr>
 
-  <div class="slider-container">
-    <img id="slider-image" src="docs/foto1.png" alt="Foto 1" />
-    <button id="next-btn" aria-label="Prossima immagine">▶</button>
-  </div>
+  <header>
+    <h1>THE CHEMIST'S CODE</h1>
+    <h2>Un Serious Game per imparare le basi della Chimica</h2>
+    <div class="test-tubes" role="tablist" aria-label="Sezioni gioco">
+      <img src="docs/provetta1.png" alt="Container immagini" id="tube0" role="tab" tabindex="0" aria-selected="true" />
+      <img src="docs/provetta2.png" alt="Descrizione gioco" id="tube1" role="tab" tabindex="-1" aria-selected="false" />
+      <img src="docs/provetta3.png" alt="Progetto Github" id="tube2" role="tab" tabindex="-1" aria-selected="false" />
+      <img src="docs/provetta4.png" alt="Download" id="tube3" role="tab" tabindex="-1" aria-selected="false" />
+      <img src="docs/provetta5.png" alt="Sviluppatori" id="tube4" role="tab" tabindex="-1" aria-selected="false" />
+    </div>
+  </header>
 
-  <hr>
+  <main>
+    <!-- Sezione 0: Container immagini con slider -->
+    <section id="image-container" class="active" role="tabpanel" tabindex="0" aria-labelledby="tube0">
 
-  <section id="about-game" style="max-width: 800px; margin: auto; padding: 2rem;">
-    <p>
-      <strong>The Chemist’s Code</strong> è un <em>serious game</em> educativo pensato per introdurre
-      studenti e appassionati ai concetti fondamentali della chimica attraverso un’esperienza immersiva e interattiva.
-    </p>
-    <p>
-      Entra nei panni di un chimico che, a seguito di un misterioso incidente nel laboratorio, ha perso la memoria e si
-      ritrova rinchiuso in un ambiente abbandonato. Per recuperare le sue conoscenze e fuggire, dovrà esplorare stanze,
-      trovare indizi e risolvere enigmi legati alla chimica.
-    </p>
-    <p>
-      Il gioco si sviluppa come una escape room virtuale articolata in tre livelli, ciascuno dedicato a un tema chiave:
-      <strong>la tavola periodica</strong>, <strong>i legami chimici</strong> e <strong>le reazioni chimiche</strong>.
-    </p>
-    <p>
-      Solo risolvendo i puzzle e ricostruendo il proprio passato scientifico, il protagonista potrà riconquistare la
-      libertà… e la sua identità.
-    </p>
+      <div class="slider-container">
+        <img id="slider-image" src="docs/foto1.png" alt="Foto 1" />
+        <button id="next-btn" aria-label="Prossima immagine">▶</button>
+      </div>
 
-    <h3>📚 Livelli di gioco</h3>
-    <ul>
-      <li>🧭 <strong>Livello 1</strong> – La Tavola Periodica: esplora simboli, gruppi, periodi e proprietà degli
-        elementi.</li>
-      <li>🔗 <strong>Livello 2</strong> – I Legami Chimici: studia valenze, legami ionici e legami covalenti tra atomi.
-      </li>
-      <li>⚗️ <strong>Livello 3</strong> – Le Reazioni Chimiche: riconosci tipi di reazione e bilancia equazioni
-        chimiche.</li>
-    </ul>
-  </section>
+    </section>
 
-  <hr>
+    <!-- Sezione 1 -->
+    <section id="desc-game" role="tabpanel" tabindex="0" aria-labelledby="tube1">
 
-  <h2>Progetto Github</h2>
-  <a href="https://github.com/OrangeJuiceV/Chemist-sCode" target="_blank">
-    <img src="docs/github.png" alt="github" width="50" height="50" />
-  </a>
+      <p>
+        <strong>The Chemist’s Code</strong> è un <em>serious game</em> educativo pensato per introdurre
+        studenti e appassionati ai concetti fondamentali della chimica attraverso un’esperienza immersiva e interattiva.
+      </p>
+      <p>
+        Entra nei panni di un chimico che, a seguito di un misterioso incidente nel laboratorio, ha perso la memoria e si
+        ritrova rinchiuso in un ambiente abbandonato. Per recuperare le sue conoscenze e fuggire, dovrà esplorare stanze,
+        trovare indizi e risolvere enigmi legati alla chimica.
+      </p>
+      <p>
+        Il gioco si sviluppa come una escape room virtuale articolata in tre livelli, ciascuno dedicato a un tema chiave:
+        <strong>la tavola periodica</strong>, <strong>i legami chimici</strong> e <strong>le reazioni chimiche</strong>.
+      </p>
+      <p>
+        Solo risolvendo i puzzle e ricostruendo il proprio passato scientifico, il protagonista potrà riconquistare la
+        libertà… e la sua identità.
+      </p>
 
-  <hr>
+      <h3>📚 Livelli di gioco</h3>
+      <ul>
+        <li>🧭 <strong>Livello 1</strong> – La Tavola Periodica: esplora simboli, gruppi, periodi e proprietà degli elementi.</li>
+        <li>🔗 <strong>Livello 2</strong> – I Legami Chimici: studia valenze, legami ionici e legami covalenti tra atomi.</li>
+        <li>⚗️ <strong>Livello 3</strong> – Le Reazioni Chimiche: riconosci tipi di reazione e bilancia equazioni chimiche.</li>
+      </ul>
+    </section>
 
-  <h2>Download diretto</h2>
-  <div style="text-align: center;">
-    <a href="docs/documentation.pdf" download>Scarica il gioco</a>
-  </div>
+    <!-- Sezione 2 -->
+    <section id="github" role="tabpanel" tabindex="0" aria-labelledby="tube2">
+      <h2>Progetto Github</h2>
+      <a href="https://github.com/OrangeJuiceV/Chemist-sCode" target="_blank" rel="noopener noreferrer">
+        <img src="docs/github.png" alt="github" width="50" height="50" />
+      </a>
+      <p style="text-align: center;">clicca ↑</p>
+      <div style="text-align: center;">
+        <img src="docs/github2.png" alt="githubproject" style="width: 90%; height: auto;" />
+      </div>
+    </section>
 
-  <hr>
+    <!-- Sezione 3 -->
+    <section id="download" role="tabpanel" tabindex="0" aria-labelledby="tube3">
+      <h2>Download</h2>
+      <a href="https://github.com/OrangeJuiceV/Chemist-sCode/releases/latest" target="_blank" rel="noopener noreferrer">
+        <img src="docs/download.png" alt="download" width="50" height="50" />
+      </a>
+    </section>
 
-  <h2>Sviluppatori</h2>
-  <p>
-    <strong>Claudio di Pietro</strong> - 111111<br>
-    Ricerca asset, Progettazione level design, Ricerca e sviluppo di
-    musiche e suoni, Strutturazione materiale testuale, Sviluppo delle impostazioni.
-    <br><br>
-    <strong>Giuseppe Pio Fallucca</strong> - 782111<br>
-    Ricerca asset, Sviluppo meccaniche fondamentali,
-    Strutturazione materiale testuale, Sviluppo dei menu di gioco, test e revisioni.
-  </p>
+    <!-- Sezione 4 -->
+    <section id="authors" role="tabpanel" tabindex="0" aria-labelledby="tube4">
+      <h2>Sviluppatori</h2>
+      <p>
+        <strong>Claudio di Pietro</strong> - 111111<br>
+        Ricerca asset, Progettazione level design, Ricerca e sviluppo di
+        musiche e suoni, Strutturazione materiale testuale, Sviluppo delle impostazioni.
+        <br><br>
+        <strong>Giuseppe Pio Fallucca</strong> - 782111<br>
+        Ricerca asset, Sviluppo meccaniche fondamentali,
+        Strutturazione materiale testuale, Sviluppo dei menu di gioco, test e revisioni.
+      </p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 The Chemist’s Code - Tutti i diritti riservati. <br>
+      Questo sito non raccoglie né memorizza dati personali. Tuttavia, carica un font da Google Fonts, che potrebbe
+      raccogliere dati tecnici come l'indirizzo IP. Nessun altro cookie o tracciamento viene effettuato. <br>
+      Per maggiori informazioni, visita la <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy di
+        Google</a>.</p>
+  </footer>
 
   <script>
-    (function () {
-      const images = ['docs/foto1.png', 'docs/foto2.png', 'docs/foto3.png'];
-      let currentIndex = 0;
+    // Gestione selezione delle provette
+    const tubes = document.querySelectorAll('.test-tubes img');
+    const sections = document.querySelectorAll('main section');
 
-      const sliderImage = document.getElementById('slider-image');
-      const nextBtn = document.getElementById('next-btn');
+    tubes.forEach((tube, index) => {
+      tube.addEventListener('click', () => {
+        // Rimuovi active da tutti
+        tubes.forEach(t => {
+          t.classList.remove('active');
+          t.setAttribute('aria-selected', 'false');
+          t.setAttribute('tabindex', '-1');
+        });
+        sections.forEach(sec => sec.classList.remove('active'));
 
-      nextBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % images.length;
-        sliderImage.src = images[currentIndex];
-        sliderImage.alt = `Foto ${currentIndex + 1}`;
+        // Imposta active su selezionato
+        tube.classList.add('active');
+        tube.setAttribute('aria-selected', 'true');
+        tube.setAttribute('tabindex', '0');
+        sections[index].classList.add('active');
+        sections[index].focus();
+
+        currentSection = index;
       });
-    })();
+    });
+
+    // Variabile indice sezione attiva
+    let currentSection = 0;
+
+    // Event listener scroll mouse per cambiare sezione
+    window.addEventListener('wheel', (e) => {
+      if (e.deltaY > 0) {
+        if (currentSection < tubes.length - 1) {
+          currentSection++;
+          tubes[currentSection].click();
+        }
+      } else if (e.deltaY < 0) {
+        if (currentSection > 0) {
+          currentSection--;
+          tubes[currentSection].click();
+        }
+      }
+    }, { passive: true });
+
+    // Slider immagini nella sezione 0
+    const sliderImages = ['docs/foto1.png', 'docs/foto2.png', 'docs/foto3.png'];
+    let sliderIndex = 0;
+    const sliderImageElement = document.getElementById('slider-image');
+    const nextBtn = document.getElementById('next-btn');
+
+    nextBtn.addEventListener('click', () => {
+      sliderIndex = (sliderIndex + 1) % sliderImages.length;
+      sliderImageElement.src = sliderImages[sliderIndex];
+      sliderImageElement.alt = `Foto ${sliderIndex + 1}`;
+    });
+
+    // Swipe touch su mobile per cambiare sezione
+    let touchStartY = 0;
+    let touchEndY = 0;
+
+    window.addEventListener('touchstart', (e) => {
+      touchStartY = e.changedTouches[0].screenY;
+    }, { passive: true });
+
+    window.addEventListener('touchend', (e) => {
+      touchEndY = e.changedTouches[0].screenY;
+      handleGesture();
+    }, { passive: true });
+
+    function handleGesture() {
+      const swipeThreshold = 50; // distanza minima swipe in pixel
+
+      if (touchStartY - touchEndY > swipeThreshold) {
+        // Swipe verso l'alto → sezione successiva
+        if (currentSection < tubes.length - 1) {
+          currentSection++;
+          tubes[currentSection].click();
+        }
+      } else if (touchEndY - touchStartY > swipeThreshold) {
+        // Swipe verso il basso → sezione precedente
+        if (currentSection > 0) {
+          currentSection--;
+          tubes[currentSection].click();
+        }
+      }
+    }
   </script>
-
-  <hr>
-
-  <p style="font-size: 0.65rem; text-align: center; color: #666; margin-top: 40px;">
-    Questo sito non raccoglie né memorizza dati personali. Tuttavia, carica un font da Google Fonts, che potrebbe
-    raccogliere dati tecnici come l'indirizzo IP. Nessun altro cookie o tracciamento viene effettuato. <br>
-    Per maggiori informazioni, visita la <a href="https://policies.google.com/privacy" target="_blank">Privacy Policy di
-      Google</a>.
-  </p>
-
 </body>
 
 </html>
