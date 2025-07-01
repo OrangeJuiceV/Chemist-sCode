@@ -14,7 +14,6 @@
       margin: 0;
       padding: 0;
     }
-
     body {
       display: flex;
       flex-direction: column;
@@ -24,7 +23,8 @@
       margin: 0;
       padding: 0;
       overflow-x: hidden;
-      overflow-y: auto; /* riattivato scroll verticale */
+      overflow-y: auto; /* scroll verticale */
+      min-height: 100vh; /* aggiunto */
     }
 
     /* Header fisso */
@@ -88,10 +88,8 @@
       margin: 0 auto 40px auto;
       padding: 20px 40px;
       box-sizing: border-box;
-      /* altezza e overflow rimossi per scroll pagina */
-      /* height: 80vh; */
-      /* overflow: hidden; */
       position: relative;
+      flex-grow: 1; /* aggiunto */
     }
 
     section {
@@ -373,34 +371,42 @@
       }
     }, { passive: false });
 
-
-    // Swipe touch per cambiare sezione (orizzontale)
-    let touchStartX = 0;
-    let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
 
     window.addEventListener('touchstart', (e) => {
-      touchStartX = e.changedTouches[0].screenX;
+      touchStartY = e.changedTouches[0].screenY;
+      touchStartX = e.changedTouches[0].screenX; // tieni anche X per swipe orizzontale esistente
     });
 
     window.addEventListener('touchend', (e) => {
+      touchEndY = e.changedTouches[0].screenY;
       touchEndX = e.changedTouches[0].screenX;
-      handleGesture();
+      handleVerticalSwipe();
+      handleGesture(); // esistente per swipe orizzontale
     });
 
-    function handleGesture() {
-      if (touchEndX < touchStartX - 50) { // swipe sinistra -> avanti se possibile
-        if (currentSection < tubes.length - 1) {
-          currentSection++;
-          tubes[currentSection].click();
-        }
-      }
-      if (touchEndX > touchStartX + 50) { // swipe destra -> indietro se possibile
-        if (currentSection > 0) {
-          currentSection--;
-          tubes[currentSection].click();
+    function handleVerticalSwipe() {
+      const deltaY = touchStartY - touchEndY;
+
+      // soglia per swipe verticale
+      if (Math.abs(deltaY) > 50) {
+        if (deltaY > 0) {
+          // swipe verso l'alto = scroll verso il basso (vai avanti se possibile)
+          if (currentSection < tubes.length - 1) {
+            currentSection++;
+            tubes[currentSection].click();
+          }
+        } else {
+          // swipe verso il basso = scroll verso l'alto (vai indietro se possibile)
+          if (currentSection > 0) {
+            currentSection--;
+            tubes[currentSection].click();
+          }
         }
       }
     }
+
 
     // Gestione slider immagini nella prima sezione
     const sliderImages = [
