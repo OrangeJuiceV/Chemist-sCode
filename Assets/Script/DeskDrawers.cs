@@ -47,14 +47,22 @@ public class DeskDrawers : MonoBehaviour, IInteractable
     {
         if (!isMoving && !isLocked)
         {
-            isMoving = true; // Inizia il movimento (apertura o chiusura)
+            isMoving = true; // Inizia il movimento
         }
         else
         {
-            dialogueManager.StartDialogue(new List<string>{
+            if (dialogueManager != null)
+            {
+                dialogueManager.StartDialogue(new List<string>{
                 "Il cassetto è bloccato",
                 "Trova un modo per sbloccarlo"
             });
+            }
+            else
+            {
+                Debug.LogWarning("DialogueManager non assegnato nel DeskDrawers!");
+            }
         }
     }
+
 }
