@@ -45,7 +45,7 @@ public class Pc2ndEnigma : MonoBehaviour, IInteractable
 
     void Update()
     {
-        if (imUsing && Input.GetKeyDown(KeyCode.F))
+        if (imUsing && Input.GetKeyDown(KeyCode.Escape))
         {
             ExitInteraction();
         }

@@ -52,7 +52,7 @@ public class EnigmaOneDisplay : MonoBehaviour, IInteractable
     {
         if (!imUsingIt) return;
 
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
             Quit();
         }

@@ -26,7 +26,7 @@ public class Computer : MonoBehaviour, IInteractable
     void Update()
     {
         // Check for Escape key to exit interaction
-        if (imUsing && Input.GetKeyDown(KeyCode.F))
+        if (imUsing && Input.GetKeyDown(KeyCode.Escape))
         {
             ExitInteraction();
         }
