@@ -25,6 +25,8 @@ public class ThirdEnigma : MonoBehaviour
     public CrystalDialogue secondCrystal;
     public CrystalDialogue thirdCrystal;
 
+    public Door armadietto;
+
     private readonly Vector3[] scaleStates = new Vector3[]
     {
         new (1f, 1f, 1f),
@@ -123,10 +125,12 @@ public class ThirdEnigma : MonoBehaviour
 
                  case 2:
                     // sblocca cassa
+                    armadietto.isLocked = false;
                     break;
 
                     // Altre azioni di successo qui...
             }
+
         }
         else
         {
