@@ -15,6 +15,7 @@ public class PeriodicElement : MonoBehaviour, IInteractable
     public GameObject Litio;
     public GameObject Oro;
 
+    public bool litioAviable = false; // Variabile per gestire la disponibilità del Litio
     public void Interact()
     {
 
@@ -24,7 +25,8 @@ public class PeriodicElement : MonoBehaviour, IInteractable
                 if (dialogueManager != null)
                 {
                     dialogueManager.StartDialogue(new List<string> {
-                        "Ecco perché il palloncino volava, era pieno di Elio"
+                        "L’Elio è un gas nobile molto leggero e non infiammabile. Viene usato nei palloncini perché è più leggero dell’aria e li fa volare!",
+                        "L'Elio è stato aggiunto alla tua tavola periodica!"
                     });
                     Elio.SetActive(true);
                 }
@@ -34,7 +36,11 @@ public class PeriodicElement : MonoBehaviour, IInteractable
                 }
                 break;
 
-            case 1: // Terzo enigma
+            case 1: // 2 enigma Litio
+                if (!litioAviable)
+                {
+                    break;
+                }
                 if (door3rdEnigma != null)
                 {
                     door3rdEnigma.isLocked = false;
@@ -51,6 +57,50 @@ public class PeriodicElement : MonoBehaviour, IInteractable
                 else
                 {
                     Debug.LogWarning("light3rdEnigma non assegnata.");
+                }
+                Litio.SetActive(true); // Attiva il Litio
+
+                if (dialogueManager != null)
+                {
+                    dialogueManager.StartDialogue(new List<string> {
+                        "Il Litio è un metallo leggero e molto reattivo, ed è utilizzato principalmente nelle batterie ricaricabili grazie alla sua alta densità di energia.",
+                        "Il Litio è stato aggiunto alla tua tavola periodica!",
+                        "Una porta nella stanza principale si è sbloccata, ora puoi proseguire."
+                });
+                }
+                else
+                {
+                    Debug.LogWarning("DialogueManager non assegnato al PeriodicElement.");
+                }
+                break;
+
+            case 2: // Calcio per il latte
+                if (dialogueManager != null)
+                {
+                    dialogueManager.StartDialogue(new List<string> {
+                        "Il Calcio è un elemento essenziale per la salute delle ossa e dei denti, e viene spesso aggiunto ai prodotti lattiero-caseari.",
+                        "Il calcio è stato aggiunto alla tua tavola periodica!"
+                    });
+                    Calcio.SetActive(true);
+                }
+                else
+                {
+                    Debug.LogWarning("DialogueManager non assegnato al PeriodicElement.");
+                }
+                break;
+
+            case 3: // Oro monete
+                if (dialogueManager != null)
+                {
+                    dialogueManager.StartDialogue(new List<string> {
+                        "L'Oro è un metallo prezioso noto per la sua bellezza e resistenza alla corrosione. Viene spesso usato in gioielleria e come investimento.",
+                        "L'Oro è stato aggiunto alla tua tavola periodica!"
+                    });
+                    Oro.SetActive(true);
+                }
+                else
+                {
+                    Debug.LogWarning("DialogueManager non assegnato al PeriodicElement.");
                 }
                 break;
         }

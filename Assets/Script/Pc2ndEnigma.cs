@@ -20,6 +20,8 @@ public class Pc2ndEnigma : MonoBehaviour, IInteractable
     public DeskDrawers drawer; // cassetto da sbloccare
     public DialogueManager dialogueManager; // per gestire il dialogo quando l'enigma è risolto
 
+    public PeriodicElement periodicElement; // per gestire l'elemento periodico associato a questo enigma
+
     // soluzioni
 
     private readonly List<int[]> solutions = new List<int[]>
@@ -155,6 +157,8 @@ public class Pc2ndEnigma : MonoBehaviour, IInteractable
                 "Il cassetto si sblocca..."
             });
             // Esegui azioni per completamento enigma (suoni, animazioni, ecc.)
+            periodicElement.litioAviable = true; // Imposta Litio come disponibile
+
             ExitInteraction(); // Chiude l'interazione con il PC
 
         }
