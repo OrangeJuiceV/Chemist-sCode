@@ -9,9 +9,14 @@ public class PeriodicElement : MonoBehaviour, IInteractable
     public Door door3rdEnigma;
     public Light light3rdEnigma;
 
+    public GameObject Calcio;
+    public GameObject Elio;
+    public GameObject Mercurio;
+    public GameObject Litio;
+    public GameObject Oro;
+
     public void Interact()
     {
-        gameObject.SetActive(false); // Disattiva l'oggetto PeriodicElement  
 
         switch (elementID)
         {
@@ -21,6 +26,7 @@ public class PeriodicElement : MonoBehaviour, IInteractable
                     dialogueManager.StartDialogue(new List<string> {
                         "Ecco perché il palloncino volava, era pieno di Elio"
                     });
+                    Elio.SetActive(true);
                 }
                 else
                 {
