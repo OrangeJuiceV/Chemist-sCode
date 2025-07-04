@@ -23,6 +23,7 @@ public class playerItems : MonoBehaviour
                 fpc.playerCanMove = false;
                 periodicTable.SetActive(true);
                 isMapOpen = true;
+                fpc.cameraCanMove = false;
             }
             else
             {
@@ -30,6 +31,7 @@ public class playerItems : MonoBehaviour
                 if (!wasBlocked)
                 {
                     fpc.playerCanMove = true;
+                    fpc.cameraCanMove = true;
                 }
                 periodicTable.SetActive(false);
                 isMapOpen = false;

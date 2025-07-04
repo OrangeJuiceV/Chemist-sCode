@@ -114,7 +114,7 @@ public class Door : MonoBehaviour, IInteractable
         {
             dialogueManager.StartDialogue(new List<string>
             {
-                "E' bloccata!, trova un modo per aprirla"
+                "E' bloccata! Trova un modo per aprirla"
             });
             return;
         }
