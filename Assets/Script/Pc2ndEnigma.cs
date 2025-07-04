@@ -72,7 +72,7 @@ public class Pc2ndEnigma : MonoBehaviour, IInteractable
         imUsing = true;
     }
 
-
+    [System.Obsolete]
     public void ExitInteraction()
     {
         fpc.changeActive();
@@ -81,6 +81,9 @@ public class Pc2ndEnigma : MonoBehaviour, IInteractable
         Cursor.visible = false;
         schermata.SetActive(false);
         imUsing = false;
+
+        GameObject.FindObjectOfType<PauseMenu>().SetEscapeCooldown();
+
     }
 
     private void InitButtons()

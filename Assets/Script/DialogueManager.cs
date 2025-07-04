@@ -23,7 +23,7 @@ public class DialogueManager : MonoBehaviour
 
     void Update()
     {
-        if (isDialogueActive && Input.GetMouseButtonDown(0))
+        if (isDialogueActive && Input.GetKeyDown(KeyCode.Space))
         {
             ShowNextLine();
         }

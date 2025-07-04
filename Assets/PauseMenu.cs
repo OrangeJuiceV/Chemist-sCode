@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -10,47 +11,45 @@ public class PauseMenu : MonoBehaviour
     public GameObject QuitUI; // Reference to the quit confirmation UI GameObject
 
     public bool isGamePaused = false; // Track if the game is paused
+    private float escapeCooldown = 0f; // Cooldown to prevent double Escape input
 
-    // Update is called once per frame
     void Update()
     {
+        // Cooldown to prevent handling Escape input immediately after exiting interaction
+        if (escapeCooldown > 0f)
+        {
+            escapeCooldown -= Time.unscaledDeltaTime;
+            return;
+        }
 
+        // If the game is paused and Escape is pressed again, resume
         if (isGamePaused && Input.GetKeyDown(KeyCode.Escape))
         {
             if (PauseMenuUI.activeSelf)
             {
-                riprendi(); // Call the method to resume the game
+                riprendi();
             }
             return;
         }
 
-
+        // If the game is not paused and Escape is pressed, open the pause menu
         if (fpc.playerCanMove && Input.GetKeyDown(KeyCode.Escape))
         {
-            isGamePaused = true; // Set the game as paused
-            // blocks the player from moving
+            isGamePaused = true;
             fpc.setIsWalking(false);
             fpc.changeActive();
             fpc.cameraCanMove = false;
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
-            // Show the pause menu UI
             WholeMenu.SetActive(true);
             PauseMenuUI.SetActive(true);
         }
-
-
-
     }
 
-
-
-
     public void riprendi()
-    { 
-        isGamePaused = false; // Set the game as not paused
+    {
+        isGamePaused = false;
         WholeMenu.SetActive(false);
-        // Unlock the player movement
         fpc.setIsWalking(true);
         fpc.changeActive();
         Cursor.lockState = CursorLockMode.Locked;
@@ -79,5 +78,16 @@ public class PauseMenu : MonoBehaviour
         EventSystem.current.SetSelectedGameObject(null);
         PauseMenuUI.SetActive(false);
         QuitUI.SetActive(true);
+    }
+
+    public void quitGame()
+    {
+        SceneManager.LoadScene("Main_Menu");
+    }
+
+    // Called from external script (e.g., Computer) after exiting interaction
+    public void SetEscapeCooldown()
+    {
+        escapeCooldown = 0.2f; // 200 ms
     }
 }

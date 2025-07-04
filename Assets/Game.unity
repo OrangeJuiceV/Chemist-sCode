@@ -45506,7 +45506,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1049345385}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 791384210}
+        m_TargetAssemblyTypeName: PauseMenu, Assembly-CSharp
+        m_MethodName: quitGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1049345385
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -90831,6 +90843,30 @@ PrefabInstance:
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
       objectReference: {fileID: 2100000, guid: 2bece4266c1175a4faabdb2e7063f6fb, type: 2}
+    - target: {fileID: 3710546519062849806, guid: 39cc7f30cb7643c4788fafb36317e6f0, type: 3}
+      propertyPath: m_Size.x
+      value: 3.1350377
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710546519062849806, guid: 39cc7f30cb7643c4788fafb36317e6f0, type: 3}
+      propertyPath: m_Size.y
+      value: 1.6755009
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710546519062849806, guid: 39cc7f30cb7643c4788fafb36317e6f0, type: 3}
+      propertyPath: m_Size.z
+      value: 0.717156
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710546519062849806, guid: 39cc7f30cb7643c4788fafb36317e6f0, type: 3}
+      propertyPath: m_Center.x
+      value: 0.40491635
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710546519062849806, guid: 39cc7f30cb7643c4788fafb36317e6f0, type: 3}
+      propertyPath: m_Center.y
+      value: 0.33775055
+      objectReference: {fileID: 0}
+    - target: {fileID: 3710546519062849806, guid: 39cc7f30cb7643c4788fafb36317e6f0, type: 3}
+      propertyPath: m_Center.z
+      value: -0.050967693
+      objectReference: {fileID: 0}
     - target: {fileID: 5891565926528241176, guid: 39cc7f30cb7643c4788fafb36317e6f0, type: 3}
       propertyPath: 'm_Materials.Array.data[0]'
       value: 
