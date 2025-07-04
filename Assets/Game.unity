@@ -49521,6 +49521,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5574590964276995290, guid: 3ba076057d7b776468213eb139f9a8ae, type: 3}
+      propertyPath: Mercurio
+      value: 
+      objectReference: {fileID: 1860893697}
+    - target: {fileID: 5574590964276995290, guid: 3ba076057d7b776468213eb139f9a8ae, type: 3}
+      propertyPath: elementID
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 5574590964276995290, guid: 3ba076057d7b776468213eb139f9a8ae, type: 3}
       propertyPath: dialogueManager
       value: 
       objectReference: {fileID: 1853611805}
@@ -52728,6 +52736,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueManager: {fileID: 1853611805}
+  container: {fileID: 1149267613}
   isLocked: 1
 --- !u!114 &1226323488
 MonoBehaviour:

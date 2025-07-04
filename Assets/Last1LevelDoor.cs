@@ -3,31 +3,63 @@ using System.Collections.Generic;
 
 public class Last1LevelDoor : MonoBehaviour, IInteractable
 {
-
-    public DialogueManager dialogueManager; // Reference to the DialogueManager
-    public bool isLocked = true; // Track if the door is locked
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public DialogueManager dialogueManager;
+    public GameObject container; // Ha 1 figlio con i 5 elementi
+    public bool isLocked = true;
 
     public void Interact()
-    { 
-        if (isLocked)
+    {
+        // Attiva temporaneamente il container per accedere ai figli
+        container.SetActive(true);
+
+        // Controllo base: container deve avere almeno un figlio
+        if (container.transform.childCount == 0)
+        {
+            Debug.LogWarning("Il container non ha figli!");
+            container.SetActive(false); // Disattiva alla fine comunque
+            return;
+        }
+
+        Transform elementiParent = container.transform.GetChild(0);
+        bool allElementsActive = true;
+
+        foreach (Transform child in elementiParent)
+        {
+            if (!child.gameObject.activeSelf)
+            {
+                allElementsActive = false;
+                break;
+            }
+        }
+
+        if (allElementsActive)
+        {
+            if (isLocked)
+            {
+                isLocked = false;
+                dialogueManager.StartDialogue(new List<string> {
+                    "Hai raccolto tutti gli elementi!",
+                    "La porta si apre e puoi proseguire verso l'uscita..."
+                });
+
+                // Esempio: GetComponent<Animator>().SetTrigger("Open");
+            }
+            else
+            {
+                dialogueManager.StartDialogue(new List<string> {
+                    "La porta è già aperta."
+                });
+            }
+        }
+        else
         {
             dialogueManager.StartDialogue(new List<string> {
                 "La porta è bloccata!",
                 "Trova tutti gli elementi della tavola mancanti per sbloccarla."
-            }); // Start the dialogue for locked door
+            });
         }
-    
+
+        // Disattiva nuovamente il container dopo il check
+        container.SetActive(false);
     }
 }

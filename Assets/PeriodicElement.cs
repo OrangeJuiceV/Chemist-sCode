@@ -103,6 +103,21 @@ public class PeriodicElement : MonoBehaviour, IInteractable
                     Debug.LogWarning("DialogueManager non assegnato al PeriodicElement.");
                 }
                 break;
+            case 4:
+                if (dialogueManager != null)
+                {
+                    dialogueManager.StartDialogue(new List<string> {
+                        "Il Mercurio è l'unico metallo liquido a temperatura ambiente. È stato usato nei termometri per misurare la temperatura, ma oggi è spesso sostituito perché tossico.",
+                        "Il Mercurio è stato aggiunto alla tua tavola periodica!"
+                    });
+                    Mercurio.SetActive(true);
+                }
+                else
+                {
+                    Debug.LogWarning("DialogueManager non assegnato al PeriodicElement.");
+                }
+                break;
+
         }
     }
 }
