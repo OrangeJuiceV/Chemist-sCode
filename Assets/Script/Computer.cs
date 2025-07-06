@@ -16,6 +16,8 @@ public class Computer : MonoBehaviour, IInteractable
 
     public FirstPersonController fpc; // Reference to your first person controller
 
+    public Canvas otherCanvas;
+
     void Start() 
     {
         posSchermo = schermo.transform.position;
@@ -67,6 +69,7 @@ public class Computer : MonoBehaviour, IInteractable
         oldCamRot = focusCamera.transform.rotation;
 
         canvas.enabled = true;
+        otherCanvas.enabled = false; // Disable the other canvas if needed
         setCamera();
     }
 
@@ -84,10 +87,24 @@ public class Computer : MonoBehaviour, IInteractable
         Cursor.lockState = CursorLockMode.Locked; // Lock the cursor to the center
         Cursor.visible = false;                   // Make the cursor invisible
         canvas.enabled = false;
-
+        otherCanvas.enabled = false;
         imUsing = false; // Exit interaction mode
 
 
         GameObject.FindObjectOfType<PauseMenu>().SetEscapeCooldown();
+    }
+
+    public void changeCanvas()
+    { 
+        if (canvas.enabled)
+        {
+            canvas.enabled = false;
+            otherCanvas.enabled = true; // Show the other canvas
+        }
+        else
+        {
+            canvas.enabled = true;
+            otherCanvas.enabled = false; // Hide the other canvas
+        }
     }
 }
