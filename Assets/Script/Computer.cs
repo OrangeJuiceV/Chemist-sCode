@@ -18,6 +18,8 @@ public class Computer : MonoBehaviour, IInteractable
 
     public Canvas otherCanvas;
 
+    private bool firstUse = true;
+    public ObjectiveStory objectiveStory; // Reference to the ObjectiveStory script
     void Start() 
     {
         posSchermo = schermo.transform.position;
@@ -57,6 +59,11 @@ public class Computer : MonoBehaviour, IInteractable
 
     public virtual void Interact()
     {
+        if (firstUse)
+        {
+            objectiveStory.StartCoroutine(objectiveStory.updateTo2nd());
+            firstUse = false; // Prevent further updates on subsequent interactions
+        }
         Debug.Log("Interacting w/ computer");
         imUsing = true; 
         fpc.setIsWalking(false);
