@@ -6,6 +6,54 @@ public class Last1LevelDoor : MonoBehaviour, IInteractable
     public DialogueManager dialogueManager;
     public GameObject container; // Ha 1 figlio con i 5 elementi
     public bool isLocked = true;
+    public GameObject LeftDoor;
+    public GameObject RightDoor;
+
+    private const float LEFT_CLOSED = 0.0f;
+    private const float LEFT_OPEN = 1.928f;
+    private bool isOpening = false;
+    private bool isMoving = false; // Per gestire lo stato di movimento delle porte
+    private bool isOpen = false;   // Stato attuale della porta (aperta o chiusa)
+    private float openingSpeed = 2.0f; // Velocità di apertura per porte scorrevoli
+
+    public void Update()
+    {
+        if (!isMoving) return;
+
+        if (isOpening)
+        {
+            // Apertura porte scorrevoli
+            if (LeftDoor.transform.localPosition.z < LEFT_OPEN)
+            {
+                LeftDoor.transform.localPosition += new Vector3(0, 0, openingSpeed * Time.deltaTime);
+                RightDoor.transform.localPosition -= new Vector3(0, 0, openingSpeed * Time.deltaTime);
+            }
+            else
+            {
+                // Apertura completata
+                isMoving = false;
+                isOpen = true;
+                isOpening = false;
+            }
+        }
+        else
+        {
+            // Chiusura porte scorrevoli
+            if (LeftDoor.transform.localPosition.z > LEFT_CLOSED)
+            {
+                LeftDoor.transform.localPosition -= new Vector3(0, 0, openingSpeed * Time.deltaTime);
+                RightDoor.transform.localPosition += new Vector3(0, 0, openingSpeed * Time.deltaTime);
+            }
+            else
+            {
+                // Chiusura completata
+                isMoving = false;
+                isOpen = false;
+                isOpening = false;
+            }
+        }
+    }
+
     public void Interact()
     {
         // Attiva temporaneamente il container per accedere ai figli
@@ -15,7 +63,7 @@ public class Last1LevelDoor : MonoBehaviour, IInteractable
         if (container.transform.childCount == 0)
         {
             Debug.LogWarning("Il container non ha figli!");
-            container.SetActive(false); // Disattiva alla fine comunque
+            container.SetActive(false);
             return;
         }
 
@@ -41,13 +89,14 @@ public class Last1LevelDoor : MonoBehaviour, IInteractable
                     "Funziona! La tavola... era la chiave. Finalmente"
                 });
 
-                // Esempio: GetComponent<Animator>().SetTrigger("Open");
+                isOpening = true;
+                isMoving = true;
             }
             else
             {
-                dialogueManager.StartDialogue(new List<string> {
-                    "La porta è già aperta."
-                });
+                // Toggle apertura/chiusura
+                isOpening = !isOpen;
+                isMoving = true;
             }
         }
         else
