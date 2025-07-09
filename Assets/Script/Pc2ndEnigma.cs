@@ -152,11 +152,11 @@ public class Pc2ndEnigma : MonoBehaviour, IInteractable
                 Debug.Log("Avanzato alla prossima soluzione.");
             }
 
-            // Sblocca il cassetto, per ora solo 1 risposta per farlo
+            // Sblocca il cassetto
             drawer.isLocked = false;
-           dialogueManager.StartDialogue(new List<string>
+            dialogueManager.StartDialogue(new List<string>
             {
-                "Enigma risolto!",
+                "Ora ha senso! I livelli del castello… erano come i periodi della tavola periodica. Ogni riga indica quanti livelli energetici ha un atomo. Il potassio… ha 4 livelli, per questo era nel periodo 4.",
                 "Il cassetto si sblocca..."
             });
             // Esegui azioni per completamento enigma (suoni, animazioni, ecc.)
@@ -168,6 +168,10 @@ public class Pc2ndEnigma : MonoBehaviour, IInteractable
         else
         {
             Debug.Log("Soluzione errata.");
+            dialogueManager.StartDialogue(new List<string>
+            {
+                "Mh... la soluzione non è questa."
+            });
         }
     }
 

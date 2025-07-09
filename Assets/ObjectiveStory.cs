@@ -77,12 +77,4 @@ public class ObjectiveStory : MonoBehaviour
         ObjectiveText.color = new Color(0.0f, 0.0f, 0.0f); // Nero
     }
 
-    public IEnumerator updateTo6th()
-    {
-        ObjectiveText.text = "Risolvi il puzzle";
-        ObjectiveText.color = new Color(1.0f, 0.0f, 0.0f); // Rosso
-        yield return new WaitForSeconds(3.0f);
-        ObjectiveText.color = new Color(0.0f, 0.0f, 0.0f); // Nero
-    }
-
 }

@@ -122,7 +122,7 @@ public class Door : MonoBehaviour, IInteractable
         }
         if (firstUse && hasToUpdateObjective)
         {
-            objectiveStory.StartCoroutine(objectiveStory.updateTo6th());
+            objectiveStory.StartCoroutine(objectiveStory.updateTo5th());
             firstUse = false; // Imposta il flag per evitare che venga eseguito di nuovo
         }
         if (!isMoving)
