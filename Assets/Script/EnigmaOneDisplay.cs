@@ -21,6 +21,10 @@ public class EnigmaOneDisplay : MonoBehaviour, IInteractable
 
     // This Enigma unlocks a door
     public Door doorClass;
+    private bool isSolved = false; // Flag to track if the enigma is solved
+    private bool firstUse = true; // Flag to track if it's the first use
+    public ObjectiveStory objectiveStory; // Reference to the ObjectiveStory script
+
     void Start()
     {
         Transform child = this.transform.GetChild(0);
@@ -77,10 +81,13 @@ public class EnigmaOneDisplay : MonoBehaviour, IInteractable
             // Esegui azioni per completamento enigma (suoni, animazioni, ecc.)
             dialogueManager.StartDialogue(new List<string>
             {
-                "Enigma risolto!",
-                "La porta si sblocca..."
+                "I gruppi... certo!",
+                "Ogni colonna della tavola periodica è un gruppo di elementi con proprietà simili... Ora ricordo!"
             });
             doorClass.isLocked = false;
+            if (!isSolved)
+                objectiveStory.StartCoroutine(objectiveStory.updateTo4th());
+            isSolved = true; // Imposta il flag come risolto
             Quit();
         }
         else
@@ -92,6 +99,11 @@ public class EnigmaOneDisplay : MonoBehaviour, IInteractable
 
     public virtual void Interact()
     {
+        if (firstUse)
+        {
+            objectiveStory.StartCoroutine(objectiveStory.updateTo3rd());
+            firstUse = false; // Set firstUse to false after the first interaction
+        }
         imUsingIt = true;
         // settings on player
         fpc.setIsWalking(false);
@@ -130,6 +142,7 @@ public class EnigmaOneDisplay : MonoBehaviour, IInteractable
         Cursor.visible = false;                   // Make the cursor invisible
 
         GameObject.FindObjectOfType<PauseMenu>().SetEscapeCooldown();
-
+        if (!isSolved)
+            dialogueManager.StartDialogue(new List<string> { "Devo ricordare il codice" });
     }
 }

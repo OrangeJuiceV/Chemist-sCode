@@ -23,20 +23,19 @@ public class CrystalDialogue : MonoBehaviour, IInteractable
         switch (typeOfCrystal)
         {
             case 0: // Cristallo brama
-                dialogueManager.StartDialogue(new List<string> { "L’elettronegatività misura quanto un atomo attira a sé gli elettroni in un legame. " +
-                    "Più è in alto e a destra nella tavola, più è “avido”. Il fluoro, ad esempio, è il più attrattivo di tutti." }
+                dialogueManager.StartDialogue(new List<string> { "Alcuni elementi attirano gli elettroni più di altri. Più si sale a destra nella tavola… più diventano affamati." }
                     );
                 break;
 
             case 1: // Cristallo forma
                 dialogueManager.StartDialogue(new List<string> {
-                    "Più un atomo scende nel suo gruppo, più si allarga nella sua veste. La sua forma cresce con i livelli che lo separano dal nucleo."
+                    "Più un atomo scende nel suo gruppo, più si espande. Ogni nuovo livello lo allontana dal nucleo… e la sua veste si fa sempre più ampia."
                 });
                 break;
 
             case 2: // Cristallo resistenza
                 dialogueManager.StartDialogue(new List<string> {
-                    "Alcuni elementi cedono facilmente ciò che possiedono… altri resistono con forza. Trova chi stringe i suoi pochi elettroni come un tesoro."
+                    "Nella tavola, chi è a destra tiene stretti i suoi elettroni. Chi è in basso… li lascia andare più facilmente. Guarda la posizione, e capirai chi resiste di più."
                 });
                 break;
 

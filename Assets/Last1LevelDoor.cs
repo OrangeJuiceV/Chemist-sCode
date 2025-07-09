@@ -6,7 +6,6 @@ public class Last1LevelDoor : MonoBehaviour, IInteractable
     public DialogueManager dialogueManager;
     public GameObject container; // Ha 1 figlio con i 5 elementi
     public bool isLocked = true;
-
     public void Interact()
     {
         // Attiva temporaneamente il container per accedere ai figli
@@ -38,8 +37,8 @@ public class Last1LevelDoor : MonoBehaviour, IInteractable
             {
                 isLocked = false;
                 dialogueManager.StartDialogue(new List<string> {
-                    "Hai raccolto tutti gli elementi!",
-                    "La porta si apre e puoi proseguire verso l'uscita..."
+                    "È chiusa… aspetta un attimo…C’è uno spazio qui… sembra fatto apposta per il tablet. Interessante. Fammi provare…",
+                    "Funziona! La tavola... era la chiave. Finalmente"
                 });
 
                 // Esempio: GetComponent<Animator>().SetTrigger("Open");
@@ -54,8 +53,8 @@ public class Last1LevelDoor : MonoBehaviour, IInteractable
         else
         {
             dialogueManager.StartDialogue(new List<string> {
-                "La porta è bloccata!",
-                "Trova tutti gli elementi della tavola mancanti per sbloccarla."
+                "È chiusa… aspetta un attimo…C’è uno spazio qui… sembra fatto apposta per il tablet. Interessante. Fammi provare…",
+                "Non succede nulla, manca qualcosa"
             });
         }
 

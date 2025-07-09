@@ -11,7 +11,8 @@ public class DeskDrawers : MonoBehaviour, IInteractable
     private float speed = 1f; // velocità movimento in unità al secondo
 
     public DialogueManager dialogueManager;
-    
+    public ObjectiveStory objectiveStory; // Riferimento all'ObjectiveStory script
+    private bool firstUse = true; // Flag per tracciare il primo utilizzo
     void Update()
     {
         if (isMoving)
@@ -45,6 +46,11 @@ public class DeskDrawers : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        if (firstUse)
+        {
+            objectiveStory.StartCoroutine(objectiveStory.updateTo5th());
+            firstUse = false; // Imposta il flag per evitare che venga eseguito di nuovo
+        }
         if (!isMoving && !isLocked)
         {
             isMoving = true; // Inizia il movimento
@@ -54,8 +60,7 @@ public class DeskDrawers : MonoBehaviour, IInteractable
             if (dialogueManager != null)
             {
                 dialogueManager.StartDialogue(new List<string>{
-                "Il cassetto è bloccato",
-                "Trova un modo per sbloccarlo"
+                "Il cassetto è chiuso devo trovare un modo per aprirlo"
             });
             }
             else

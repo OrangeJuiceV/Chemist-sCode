@@ -102,9 +102,25 @@ public class ThirdEnigma : MonoBehaviour
             // Se vuoi avviare un dialogo (opzionale)
             if (dialogueManager != null)
             {
-                dialogueManager.StartDialogue(new List<string> {
-                    "Soluzione corretta :D"
+                if (EnigmaID == 0) {
+                    dialogueManager.StartDialogue(new List<string> {
+                    "Soluzione corretta :D",
+                    "Ora ricordo... l’elettronegatività! È la tendenza di un atomo ad attirare a sé gli elettroni. E il fluoro… sì, è il più affamato di tutti."
                 });
+                }
+                if (EnigmaID == 1)
+                {
+                    dialogueManager.StartDialogue(new List<string> {
+                    "Soluzione corretta :D",
+                    "Il raggio atomico…\n Più elettroni, più strati… più grande l’atomo. Il bario… sì, è il più ‘ingombrante’"
+                });
+                }
+                if (EnigmaID == 2) {
+                    dialogueManager.StartDialogue(new List<string> {
+                    "Soluzione corretta :D",
+                    "Sì… ora ricordo! L’energia di ionizzazione misura quanto un atomo resiste a perdere un elettrone. Più l’atomo è piccolo… e più stretta è la sua presa."
+                });
+                }
             }
 
             isActive = false; // stoppa

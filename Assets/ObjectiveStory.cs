@@ -22,6 +22,7 @@ public class ObjectiveStory : MonoBehaviour
         // Avvia primo dialogo
         dialogueManager.StartDialogue(new List<string>
         {
+            "(Premi SPAZIO per proseguire i dialoghi...)",
             "……………………………………………",
             "Dove sono?... Chi... chi sono?"
         });
@@ -55,6 +56,30 @@ public class ObjectiveStory : MonoBehaviour
     public IEnumerator updateTo3rd()
     {
         ObjectiveText.text = "Trova un codice per aprire la porta";
+        ObjectiveText.color = new Color(1.0f, 0.0f, 0.0f); // Rosso
+        yield return new WaitForSeconds(3.0f);
+        ObjectiveText.color = new Color(0.0f, 0.0f, 0.0f); // Nero
+    }
+
+    public IEnumerator updateTo4th()
+    {
+        ObjectiveText.text = "Esplora il laboratorio";
+        ObjectiveText.color = new Color(1.0f, 0.0f, 0.0f); // Rosso
+        yield return new WaitForSeconds(3.0f);
+        ObjectiveText.color = new Color(0.0f, 0.0f, 0.0f); // Nero
+    }
+
+    public IEnumerator updateTo5th()
+    {
+        ObjectiveText.text = "Trova un modo per aprire il cassetto";
+        ObjectiveText.color = new Color(1.0f, 0.0f, 0.0f); // Rosso
+        yield return new WaitForSeconds(3.0f);
+        ObjectiveText.color = new Color(0.0f, 0.0f, 0.0f); // Nero
+    }
+
+    public IEnumerator updateTo6th()
+    {
+        ObjectiveText.text = "Risolvi il puzzle";
         ObjectiveText.color = new Color(1.0f, 0.0f, 0.0f); // Rosso
         yield return new WaitForSeconds(3.0f);
         ObjectiveText.color = new Color(0.0f, 0.0f, 0.0f); // Nero

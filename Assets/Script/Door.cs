@@ -20,7 +20,9 @@ public class Door : MonoBehaviour, IInteractable
     private float slidingOpeningSpeed = 2.0f; // Velocità di apertura per porte scorrevoli
 
     public DialogueManager dialogueManager; // Aggiunto per gestire il dialogo quando  la porta è bloccata
-
+    public ObjectiveStory objectiveStory; // Riferimento all'ObjectiveStory script
+    private bool firstUse = true; // Flag per tracciare il primo utilizzo
+    public bool hasToUpdateObjective;
     void Start()
     {
         initialRotation = transform.eulerAngles.y;
@@ -117,6 +119,11 @@ public class Door : MonoBehaviour, IInteractable
                 "E' bloccata! Trova un modo per aprirla"
             });
             return;
+        }
+        if (firstUse && hasToUpdateObjective)
+        {
+            objectiveStory.StartCoroutine(objectiveStory.updateTo6th());
+            firstUse = false; // Imposta il flag per evitare che venga eseguito di nuovo
         }
         if (!isMoving)
         {

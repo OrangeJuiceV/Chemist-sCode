@@ -16,6 +16,7 @@ public class PeriodicElement : MonoBehaviour, IInteractable
     public GameObject Oro;
 
     public bool litioAviable = false; // Variabile per gestire la disponibilità del Litio
+    public ObjectiveStory objectiveStory; // Riferimento all'ObjectiveStory script
     public void Interact()
     {
 
@@ -25,8 +26,9 @@ public class PeriodicElement : MonoBehaviour, IInteractable
                 if (dialogueManager != null)
                 {
                     dialogueManager.StartDialogue(new List<string> {
-                        "L’Elio è un gas nobile molto leggero e non infiammabile. Viene usato nei palloncini perché è più leggero dell’aria e li fa volare!",
-                        "L'Elio è stato aggiunto alla tua tavola periodica!"
+                        "Un palloncino... leggero... riempito d’aria? No...",
+                        "Aspetta... Elio! Sì, l’Elio è un gas... lo usano per far volare i palloncini.",
+                        "Elio... uno degli elementi mancanti della tavola!"
                     });
                     Elio.SetActive(true);
                 }
@@ -63,23 +65,26 @@ public class PeriodicElement : MonoBehaviour, IInteractable
                 if (dialogueManager != null)
                 {
                     dialogueManager.StartDialogue(new List<string> {
-                        "Il Litio è un metallo leggero e molto reattivo, ed è utilizzato principalmente nelle batterie ricaricabili grazie alla sua alta densità di energia.",
-                        "Il Litio è stato aggiunto alla tua tavola periodica!",
-                        "Una porta nella stanza principale si è sbloccata, ora puoi proseguire."
+                        "Delle batterie...Aspetta… certo, il Litio!",
+                        "È usato proprio per questo. È leggero, reattivo… perfetto per immagazzinare energia",
+                        "Un altro elemento... un altro ricordo che riaffiora.",
+                        "Una porta si è aperta"
                 });
                 }
                 else
                 {
                     Debug.LogWarning("DialogueManager non assegnato al PeriodicElement.");
                 }
+
+                objectiveStory.StartCoroutine(objectiveStory.updateTo4th());
                 break;
 
             case 2: // Calcio per il latte
                 if (dialogueManager != null)
                 {
                     dialogueManager.StartDialogue(new List<string> {
-                        "Il Calcio è un elemento essenziale per la salute delle ossa e dei denti, e viene spesso aggiunto ai prodotti lattiero-caseari.",
-                        "Il calcio è stato aggiunto alla tua tavola periodica!"
+                        "Latte... contiene calcio, giusto? Sì, il Calcio è un elemento... Ca... Ca!",
+                        "Anche questo mancava nella tavola."
                     });
                     Calcio.SetActive(true);
                 }
@@ -93,8 +98,8 @@ public class PeriodicElement : MonoBehaviour, IInteractable
                 if (dialogueManager != null)
                 {
                     dialogueManager.StartDialogue(new List<string> {
-                        "L'Oro è un metallo prezioso noto per la sua bellezza e resistenza alla corrosione. Viene spesso usato in gioielleria e come investimento.",
-                        "L'Oro è stato aggiunto alla tua tavola periodica!"
+                        "Monete d’oro... sì, l’Oro! Un altro elemento! Simbolo... Au!",
+                        "Un altro tassello del puzzle. Pian piano sto ricordando"
                     });
                     Oro.SetActive(true);
                 }
