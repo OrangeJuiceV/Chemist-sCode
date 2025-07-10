@@ -29,6 +29,7 @@ public class ThirdComputer : MonoBehaviour, IInteractable
     private bool[] solution = new bool[4] { true, false, false, true }; // Correct toggle states
 
     private bool imUsing = false; // Flag to check if the computer is being used    
+    public Door doorToUnlock; // Reference to the door to unlock
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -108,11 +109,13 @@ public class ThirdComputer : MonoBehaviour, IInteractable
         if (isCorrect)
         {
             Debug.Log("Correct answer!");
+            doorToUnlock.isLocked = false; // Unlock the door if the answer is correct
             // Handle correct answer logic here, e.g., unlock something or show a message
         }
         else
         {
             Debug.Log("Incorrect answer. Try again.");
+            
             // Handle incorrect answer logic here, e.g., show an error message
         }
     }

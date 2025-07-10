@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      argento_0: 6566605576862130751
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

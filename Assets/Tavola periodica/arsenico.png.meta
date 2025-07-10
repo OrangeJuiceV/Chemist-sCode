@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      arsenico_0: -5755804895458639918
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -13,6 +13,8 @@ public class Pcs5thEnigma : MonoBehaviour
     public Texture2D unstable;
     public Texture2D stable;
 
+    public FifthDoor doorToUnlock; // Riferimento alla porta da sbloccare
+
     private const int OTTETTO = 8;
     private static int currentElectrons = 0; // inizializzazione globale
     private bool isSolved = false;
@@ -53,6 +55,7 @@ public class Pcs5thEnigma : MonoBehaviour
         if (!isSolved && IsStable(Cloro) && IsStable(Ossigeno) && IsStable(Sodio) && IsStable(Magnesio))
         {
             isSolved = true;
+            doorToUnlock.isLocked = false; // Sblocca la porta
             dialogueManager.StartDialogue(new List<string> { "Ho stabilizzato tutti gli atomi, ora posso finalmente proseguire" });
         }
     }

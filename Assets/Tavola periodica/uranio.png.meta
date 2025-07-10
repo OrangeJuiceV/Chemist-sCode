@@ -147,7 +147,8 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      uranio_0: 4191652922420681620
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
