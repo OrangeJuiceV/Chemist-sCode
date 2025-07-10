@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 045deec3512f1454bb8a40482c3246e9
+guid: 764f81597a8d38f48b9716c183886890
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3721595282091762103
-    second: Enigma4.2_0
+      213: 4821499735090501366
+    second: Frame 1_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -96,24 +96,11 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 4
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    ignorePlatformSupport: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Enigma4.2_0
+      name: Frame 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -128,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 94e962d0fcc3a5cc0800000000000000
-      internalID: -3721595282091762103
+      spriteID: 6f695b2b67869e240800000000000000
+      internalID: 4821499735090501366
       vertices: []
       indices: 
       edges: []
@@ -147,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      Enigma4.2_0: -3721595282091762103
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
