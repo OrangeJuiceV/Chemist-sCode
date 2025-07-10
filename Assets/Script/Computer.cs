@@ -80,7 +80,6 @@ public class Computer : MonoBehaviour, IInteractable
         setCamera();
     }
 
-    [System.Obsolete]
     public void ExitInteraction()
     {
         // Reset camera to its original position and rotation
@@ -98,7 +97,7 @@ public class Computer : MonoBehaviour, IInteractable
         imUsing = false; // Exit interaction mode
 
 
-        GameObject.FindObjectOfType<PauseMenu>().SetEscapeCooldown();
+        GameObject.FindFirstObjectByType<PauseMenu>().SetEscapeCooldown();
     }
 
     public void changeCanvas()

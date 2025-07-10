@@ -36,7 +36,6 @@ public class Indizio1 : MonoBehaviour, IInteractable
         schermataIndizio.gameObject.SetActive(true);
     }
 
-    [System.Obsolete]
     public void ExitInteraction()
     {
         isOpen = false;
@@ -45,7 +44,7 @@ public class Indizio1 : MonoBehaviour, IInteractable
         fpc.cameraCanMove = true;
         schermataIndizio.gameObject.SetActive(false);
 
-        GameObject.FindObjectOfType<PauseMenu>().SetEscapeCooldown();
+        GameObject.FindFirstObjectByType<PauseMenu>().SetEscapeCooldown();
         if (hasDialogue && dialogueManager != null)
         {
             if (whichDialogue == 1)

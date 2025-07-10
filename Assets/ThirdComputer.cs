@@ -184,7 +184,7 @@ public class ThirdComputer : MonoBehaviour, IInteractable
         Cursor.visible = false;
         // Disable all frames when exiting interaction
         DisableAllFrames();
-        GameObject.FindObjectOfType<PauseMenu>().SetEscapeCooldown();
+        GameObject.FindFirstObjectByType<PauseMenu>().SetEscapeCooldown();
     }
 
     private void DisableAllFrames()

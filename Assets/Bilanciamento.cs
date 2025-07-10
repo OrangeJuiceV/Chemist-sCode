@@ -74,7 +74,6 @@ public class Bilanciamento : MonoBehaviour, IInteractable
         schermata.gameObject.SetActive(true);
     }
 
-    [System.Obsolete]
     public void ExitInteraction()
     {
         isOpen = false;
@@ -86,8 +85,6 @@ public class Bilanciamento : MonoBehaviour, IInteractable
 
         schermata.gameObject.SetActive(false);
 
-        GameObject.FindObjectOfType<PauseMenu>().SetEscapeCooldown();
-
-
+        GameObject.FindFirstObjectByType<PauseMenu>().SetEscapeCooldown();
     }
 }

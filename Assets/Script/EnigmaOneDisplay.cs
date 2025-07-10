@@ -120,7 +120,6 @@ public class EnigmaOneDisplay : MonoBehaviour, IInteractable
         // (opzionale) Puoi cambiare posizione e scala se vuoi centrato nello schermo
     }
 
-    [System.Obsolete]
     private void Quit()
     {
         imUsingIt = false;
@@ -141,7 +140,7 @@ public class EnigmaOneDisplay : MonoBehaviour, IInteractable
         Cursor.lockState = CursorLockMode.Locked; // Lock the cursor to the center
         Cursor.visible = false;                   // Make the cursor invisible
 
-        GameObject.FindObjectOfType<PauseMenu>().SetEscapeCooldown();
+        GameObject.FindFirstObjectByType<PauseMenu>().SetEscapeCooldown();
         if (!isSolved)
             dialogueManager.StartDialogue(new List<string> { "Devo ricordare il codice" });
     }

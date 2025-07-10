@@ -85645,7 +85645,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8073840823057044005, guid: 393773ab593906725ad14e17b313de2a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24.17
+      value: -14
       objectReference: {fileID: 0}
     - target: {fileID: 8073840823057044005, guid: 393773ab593906725ad14e17b313de2a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -85653,7 +85653,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8073840823057044005, guid: 393773ab593906725ad14e17b313de2a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -37.22
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 8073840823057044005, guid: 393773ab593906725ad14e17b313de2a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -94920,25 +94920,9 @@ MonoBehaviour:
   m_Mesh: {fileID: 157959560}
   m_VersionIndex: 842
   m_IsSelectable: 1
-  m_SelectedFaces: 1200000013000000
-  m_SelectedEdges:
-  - a: 73
-    b: 72
-  - a: 72
-    b: 74
-  - a: 74
-    b: 75
-  - a: 75
-    b: 73
-  - a: 77
-    b: 76
-  - a: 76
-    b: 78
-  - a: 78
-    b: 79
-  - a: 79
-    b: 77
-  m_SelectedVertices: 4a00000049000000480000004b0000004e0000004d0000004c0000004f000000
+  m_SelectedFaces: 
+  m_SelectedEdges: []
+  m_SelectedVertices: 
 --- !u!4 &1361410314
 Transform:
   m_ObjectHideFlags: 0
