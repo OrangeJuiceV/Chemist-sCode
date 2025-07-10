@@ -72,6 +72,12 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    public bool IsDialogueRunning()
+    {
+        return isDialogueActive;
+    }
+
+
     void EndDialogue()
     {
         // Ripristina il controllo solo se era attivo prima del dialogo
