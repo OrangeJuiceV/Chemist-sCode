@@ -71709,7 +71709,7 @@ MonoBehaviour:
   Ferro: {fileID: 0}
   Arsenico: {fileID: 0}
   litioAviable: 0
-  objectiveStory: {fileID: 0}
+  objectiveStory: {fileID: 12864880}
 --- !u!114 &941698498
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95256,7 +95256,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8073840823057044005, guid: 393773ab593906725ad14e17b313de2a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -24.98
+      value: -14
       objectReference: {fileID: 0}
     - target: {fileID: 8073840823057044005, guid: 393773ab593906725ad14e17b313de2a, type: 3}
       propertyPath: m_LocalPosition.y
@@ -95264,7 +95264,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8073840823057044005, guid: 393773ab593906725ad14e17b313de2a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -33
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 8073840823057044005, guid: 393773ab593906725ad14e17b313de2a, type: 3}
       propertyPath: m_LocalRotation.w
