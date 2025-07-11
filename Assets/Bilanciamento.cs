@@ -13,6 +13,9 @@ public class Bilanciamento : MonoBehaviour, IInteractable
 
     private int[] solution = new int[] { 4, 3, 2, 2, 1, 2, 1, 5, 3, 4 }; // Solution
     public Door cassaforte; // Reference to the safe lock
+
+    public DialogueManager dialogueManager; // Reference to the dialogue manager
+    public ObjectiveStory objectiveStory;
     void Start()
     {
 
@@ -50,7 +53,15 @@ public class Bilanciamento : MonoBehaviour, IInteractable
 
 
         Debug.Log("Soluzione corretta!");
+        objectiveStory.StartCoroutine(objectiveStory.updateTo13th());
         cassaforte.isLocked = false; // Sblocca la cassaforte
+        dialogueManager.StartDialogue(new List<string>
+        {
+            "Non puoi creare o distruggere materia, solo trasformarla.",
+            "È questo il senso del bilanciamento… è come mettere ordine nel caos.",
+            "Dovrei controllare quella cassaforte."
+        });
+        ExitInteraction();
     }
 
     // Update is called once per frame

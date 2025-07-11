@@ -129,5 +129,12 @@ public class ObjectiveStory : MonoBehaviour
         yield return new WaitForSeconds(3.0f);
         ObjectiveText.color = new Color(0.0f, 0.0f, 0.0f); // Nero
     }
+    public IEnumerator updateTo13th()
+    {
+        ObjectiveText.text = "Sblocca l'ultima porta ed esci dal laboratorio";
+        ObjectiveText.color = new Color(1.0f, 0.0f, 0.0f); // Rosso
+        yield return new WaitForSeconds(3.0f);
+        ObjectiveText.color = new Color(0.0f, 0.0f, 0.0f); // Nero
+    }
 
 }
