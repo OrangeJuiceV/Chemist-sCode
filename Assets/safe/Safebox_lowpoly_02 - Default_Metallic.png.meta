@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 3edf7e811c322f3cd8ecaae0186228dd
+guid: a0df1bc4860d5ab479550d821434ce0a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 7440981132975211316
-    second: wood_0
+      213: 3636944866301508810
+    second: Safebox_lowpoly_02 - Default_Metallic_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: wood_0
+      name: Safebox_lowpoly_02 - Default_Metallic_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 600
-        height: 600
+        width: 2048
+        height: 2048
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4330f5b9aeca34760800000000000000
-      internalID: 7440981132975211316
+      spriteID: accf4972616097230800000000000000
+      internalID: 3636944866301508810
       vertices: []
       indices: 
       edges: []
@@ -134,8 +134,7 @@ TextureImporter:
     secondaryTextures: []
     spriteCustomMetadata:
       entries: []
-    nameFileIdTable:
-      wood_0: 7440981132975211316
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

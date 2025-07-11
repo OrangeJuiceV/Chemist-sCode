@@ -12,7 +12,7 @@ public class Bilanciamento : MonoBehaviour, IInteractable
     private bool isOpen = false; // Track if the hint screen is open
 
     private int[] solution = new int[] { 4, 3, 2, 2, 1, 2, 1, 5, 3, 4 }; // Solution
-    public FifthDoor door; // Reference to the door to unlock
+    public Door cassaforte; // Reference to the safe lock
     void Start()
     {
 
@@ -48,8 +48,9 @@ public class Bilanciamento : MonoBehaviour, IInteractable
             }
         }
 
+
         Debug.Log("Soluzione corretta!");
-        door.isLocked = false; // Sblocca la porta
+        cassaforte.isLocked = false; // Sblocca la cassaforte
     }
 
     // Update is called once per frame

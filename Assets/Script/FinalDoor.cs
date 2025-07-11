@@ -12,20 +12,16 @@ public class FinalDoor : MonoBehaviour, IInteractable
     private const float LEFT_CLOSED = 0.0f;
     private const float LEFT_OPEN = 1.928f;
     private bool isOpening = false;
-    private bool isMoving = false; // Per gestire lo stato di movimento delle porte
-    private bool isOpen = false;   // Stato attuale della porta (aperta o chiusa)
-    private float openingSpeed = 2.0f; // Velocità di apertura per porte scorrevoli
+    private bool isMoving = false;
+    private bool isOpen = false;
+    private float openingSpeed = 2.0f;
 
-    public ObjectiveStory objectiveStory; // Riferimento all'ObjectiveStory script
-    public bool checkAll = false;
-    public bool isEnigmaSolved = false; // Per gestire lo stato dell'enigma
     public void Update()
     {
         if (!isMoving) return;
 
         if (isOpening)
         {
-            // Apertura porte scorrevoli
             if (LeftDoor.transform.localPosition.z < LEFT_OPEN)
             {
                 LeftDoor.transform.localPosition += new Vector3(0, 0, openingSpeed * Time.deltaTime);
@@ -33,7 +29,6 @@ public class FinalDoor : MonoBehaviour, IInteractable
             }
             else
             {
-                // Apertura completata
                 isMoving = false;
                 isOpen = true;
                 isOpening = false;
@@ -41,7 +36,6 @@ public class FinalDoor : MonoBehaviour, IInteractable
         }
         else
         {
-            // Chiusura porte scorrevoli
             if (LeftDoor.transform.localPosition.z > LEFT_CLOSED)
             {
                 LeftDoor.transform.localPosition -= new Vector3(0, 0, openingSpeed * Time.deltaTime);
@@ -49,7 +43,6 @@ public class FinalDoor : MonoBehaviour, IInteractable
             }
             else
             {
-                // Chiusura completata
                 isMoving = false;
                 isOpen = false;
                 isOpening = false;
@@ -71,9 +64,7 @@ public class FinalDoor : MonoBehaviour, IInteractable
         Transform elementiParent = container.transform.GetChild(0);
         bool allElementsActive = true;
 
-        int maxToCheck = checkAll ? elementiParent.childCount : Mathf.Min(5, elementiParent.childCount);
-
-        for (int i = 0; i < maxToCheck; i++)
+        for (int i = 0; i < elementiParent.childCount; i++)
         {
             Transform child = elementiParent.GetChild(i);
             if (!child.gameObject.activeSelf)
@@ -85,16 +76,17 @@ public class FinalDoor : MonoBehaviour, IInteractable
 
         if (allElementsActive)
         {
-            if (isLocked || !isEnigmaSolved)
+            if (isLocked)
             {
                 isLocked = false;
                 dialogueManager.StartDialogue(new List<string> {
-                    "È chiusa… aspetta un attimo…C’è uno spazio qui… sembra fatto apposta per il tablet. Interessante. Fammi provare…",
-                    "Funziona! La tavola... era la chiave. Finalmente"
+                    "Okay… proviamo con il tablet.",
+                    "…",
+                    "Sta succedendo qualcosa… si sta aprendo!",
+                    "Ora ricordo… tutto. Gli elementi, i legami, le reazioni… Non era solo chimica. Era parte di me"
                 });
-                objectiveStory.StartCoroutine(objectiveStory.updateTo7th());
-                isOpening = true;
-                isMoving = true;
+                container.SetActive(false);
+                return;
             }
             else
             {
