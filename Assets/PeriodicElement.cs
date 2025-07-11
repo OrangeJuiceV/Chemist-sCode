@@ -14,15 +14,29 @@ public class PeriodicElement : MonoBehaviour, IInteractable
     public GameObject Mercurio;
     public GameObject Litio;
     public GameObject Oro;
+    public GameObject Argento;
+    public GameObject Uranio;
+    public GameObject Ferro;
+    public GameObject Arsenico;
 
-    public bool litioAviable = false; // Variabile per gestire la disponibilità del Litio
+    public bool litioAviable = false; // Variabile per gestire la disponibilità del Litio per evitare problemi di collision
     public ObjectiveStory objectiveStory; // Riferimento all'ObjectiveStory script
+
+    private const int Elio_ID = 0;
+    private const int Litio_ID = 1;
+    private const int Calcio_ID = 2;
+    private const int Oro_ID = 3;
+    private const int Mercurio_ID = 4;
+    private const int Argento_ID = 5; 
+    private const int Uranio_ID = 6;
+    private const int Ferro_ID = 7;
+    private const int Arsenico_ID = 8; 
     public void Interact()
     {
 
         switch (elementID)
         {
-            case 0: // Elio
+            case Elio_ID:
                 if (dialogueManager != null)
                 {
                     dialogueManager.StartDialogue(new List<string> {
@@ -38,7 +52,7 @@ public class PeriodicElement : MonoBehaviour, IInteractable
                 }
                 break;
 
-            case 1: // 2 enigma Litio
+            case Litio_ID: 
                 if (!litioAviable)
                 {
                     break;
@@ -79,7 +93,7 @@ public class PeriodicElement : MonoBehaviour, IInteractable
                 objectiveStory.StartCoroutine(objectiveStory.updateTo4th());
                 break;
 
-            case 2: // Calcio per il latte
+            case Calcio_ID: 
                 if (dialogueManager != null)
                 {
                     dialogueManager.StartDialogue(new List<string> {
@@ -94,7 +108,7 @@ public class PeriodicElement : MonoBehaviour, IInteractable
                 }
                 break;
 
-            case 3: // Oro monete
+            case Oro_ID:
                 if (dialogueManager != null)
                 {
                     dialogueManager.StartDialogue(new List<string> {
@@ -108,7 +122,7 @@ public class PeriodicElement : MonoBehaviour, IInteractable
                     Debug.LogWarning("DialogueManager non assegnato al PeriodicElement.");
                 }
                 break;
-            case 4:
+            case Mercurio_ID:
                 if (dialogueManager != null)
                 {
                     dialogueManager.StartDialogue(new List<string> {
@@ -116,13 +130,69 @@ public class PeriodicElement : MonoBehaviour, IInteractable
                         "Un altro pezzo del puzzle."
                     });
                     Mercurio.SetActive(true);
+                    objectiveStory.StartCoroutine(objectiveStory.updateTo6th());
                 }
                 else
                 {
                     Debug.LogWarning("DialogueManager non assegnato al PeriodicElement.");
                 }
                 break;
-
+            case Argento_ID:
+                if (dialogueManager != null)
+                {
+                    dialogueManager.StartDialogue(new List<string> {
+                        "Argento… Ag.",
+                        "Ricordo questo simbolo… appartiene a uno degli elementi. Strano come certi dettagli tornino alla mente."
+                    });
+                    Argento.SetActive(true);
+                }
+                else
+                {
+                    Debug.LogWarning("DialogueManager non assegnato al PeriodicElement.");
+                }
+                break;
+            case Uranio_ID:
+                if (dialogueManager != null)
+                {
+                    dialogueManager.StartDialogue(new List<string> {
+                        "Quel simbolo… radiazioni? Aspetta… U… Uranio!",
+                        "Un elemento pericoloso… ma importante. Un altro elemento mancante."
+                    });
+                    Uranio.SetActive(true);
+                }
+                else
+                {
+                    Debug.LogWarning("DialogueManager non assegnato al PeriodicElement.");
+                }
+                break;
+            case Ferro_ID:
+                if (dialogueManager != null)
+                {
+                    dialogueManager.StartDialogue(new List<string> {
+                        "Una calamita… Ricordo che il ferro rispondeva a questo richiamo.",
+                        "Fe… un altro frammento della mia memoria che si ricompone."
+                    });
+                    Ferro.SetActive(true);
+                }
+                else
+                {
+                    Debug.LogWarning("DialogueManager non assegnato al PeriodicElement.");
+                }
+                break;
+            case Arsenico_ID:
+                if (dialogueManager != null)
+                {
+                    dialogueManager.StartDialogue(new List<string> {
+                        "Arsenico… simbolo As.",
+                        "È uno degli elementi, certo! I ricordi stanno tornando…"
+                    });
+                    Arsenico.SetActive(true);
+                }
+                else
+                {
+                    Debug.LogWarning("DialogueManager non assegnato al PeriodicElement.");
+                }
+                break;
         }
     }
 }

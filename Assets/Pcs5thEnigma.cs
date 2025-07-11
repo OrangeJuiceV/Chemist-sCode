@@ -19,6 +19,10 @@ public class Pcs5thEnigma : MonoBehaviour
     private static int currentElectrons = 0; // inizializzazione globale
     private bool isSolved = false;
     private bool firstStableCheck = true; // Per evitare il primo controllo di stabilità
+
+    public ObjectiveStory objectiveStory; // Riferimento all'ObjectiveStory script
+
+    public GameObject Canvas;
     void Start() { }
 
     void Update() { }
@@ -56,7 +60,12 @@ public class Pcs5thEnigma : MonoBehaviour
         {
             isSolved = true;
             doorToUnlock.isLocked = false; // Sblocca la porta
-            dialogueManager.StartDialogue(new List<string> { "Ho stabilizzato tutti gli atomi, ora posso finalmente proseguire" });
+            dialogueManager.StartDialogue(new List<string> { "Ho stabilizzato tutti gli atomi, ora posso finalmente proseguire",
+            "Certo… ora ricordo. Gli elettroni di valenza... erano la chiave.",
+            "Quando un atomo dona uno o più elettroni e un altro li accetta… si crea un legame. Un legame ionico, proprio come tra metalli e non metalli.",
+            "Ma non è sempre così semplice. A volte, gli atomi condividono gli elettroni — come in una stretta di mano. Quelli sono i legami covalenti.",
+            "Tutto comincia dagli elettroni più esterni. E ora… qualcosa dentro di me si sta riattivando."});
+            objectiveStory.StartCoroutine(objectiveStory.updateTo10th());
         }
     }
 
@@ -102,10 +111,12 @@ public class Pcs5thEnigma : MonoBehaviour
                 pivotAtom.transform.GetChild(i).gameObject.SetActive(true);
                 currentElectrons = Mathf.Max(0, currentElectrons - 1);
                 Debug.Log("Elettroni disponibili: " + currentElectrons);
+                Canvas.SetActive(false); 
                 CheckIfStable(atom); // solo dopo che l'elettrone è stato davvero aggiunto
                 return;
             }
         }
+
     }
 
 
@@ -134,7 +145,7 @@ public class Pcs5thEnigma : MonoBehaviour
                 child.gameObject.SetActive(false); // Disattiva effettivamente l'elettrone
                 currentElectrons++;
                 foundActive = true;
-
+                Canvas.SetActive(true); 
                 Debug.Log("Elettroni disponibili: " + currentElectrons);
                 break;
             }

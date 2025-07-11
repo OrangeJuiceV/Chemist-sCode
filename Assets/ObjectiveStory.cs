@@ -77,4 +77,57 @@ public class ObjectiveStory : MonoBehaviour
         ObjectiveText.color = new Color(0.0f, 0.0f, 0.0f); // Nero
     }
 
+    public IEnumerator updateTo6th()
+    {
+        ObjectiveText.text = "Trova un modo per aprire la grande porta";
+        ObjectiveText.color = new Color(1.0f, 0.0f, 0.0f); // Rosso
+        yield return new WaitForSeconds(3.0f);
+        ObjectiveText.color = new Color(0.0f, 0.0f, 0.0f); // Nero
+    }
+
+    public IEnumerator updateTo7th()
+    {
+        ObjectiveText.text = "Esplora l’archivio";
+        ObjectiveText.color = new Color(1.0f, 0.0f, 0.0f); // Rosso
+        yield return new WaitForSeconds(3.0f);
+        ObjectiveText.color = new Color(0.0f, 0.0f, 0.0f); // Nero
+    }
+
+    public IEnumerator updateTo8th()
+    {
+        ObjectiveText.text = "Trova un modo per aprire la porta";
+        ObjectiveText.color = new Color(1.0f, 0.0f, 0.0f); // Rosso
+        yield return new WaitForSeconds(3.0f);
+        ObjectiveText.color = new Color(0.0f, 0.0f, 0.0f); // Nero
+    }
+
+    public IEnumerator updateTo9th()
+    {
+        ObjectiveText.text = "Risolvi l'enigma";
+        ObjectiveText.color = new Color(1.0f, 0.0f, 0.0f); // Rosso
+        yield return new WaitForSeconds(3.0f);
+        ObjectiveText.color = new Color(0.0f, 0.0f, 0.0f); // Nero
+    }
+
+    public IEnumerator updateTo10th() {
+        ObjectiveText.text = "Esplora la prossima stanza";
+        ObjectiveText.color = new Color(1.0f, 0.0f, 0.0f); // Rosso
+        yield return new WaitForSeconds(3.0f);
+        ObjectiveText.color = new Color(0.0f, 0.0f, 0.0f); // Nero
+    }
+
+    public IEnumerator updateTo11th() {
+        ObjectiveText.text = "Esplora la sala riunioni";
+        ObjectiveText.color = new Color(1.0f, 0.0f, 0.0f); // Rosso
+        yield return new WaitForSeconds(3.0f);
+        ObjectiveText.color = new Color(0.0f, 0.0f, 0.0f); // Nero
+    }
+
+    public IEnumerator updateTo12th() {
+        ObjectiveText.text = "Trova un modo per aprire la cassaforte";
+        ObjectiveText.color = new Color(1.0f, 0.0f, 0.0f); // Rosso
+        yield return new WaitForSeconds(3.0f);
+        ObjectiveText.color = new Color(0.0f, 0.0f, 0.0f); // Nero
+    }
+
 }

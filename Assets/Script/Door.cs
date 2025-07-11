@@ -23,6 +23,7 @@ public class Door : MonoBehaviour, IInteractable
     public ObjectiveStory objectiveStory; // Riferimento all'ObjectiveStory script
     private bool firstUse = true; // Flag per tracciare il primo utilizzo
     public bool hasToUpdateObjective;
+    public int objectiveToUpdate; // Obiettivo da aggiornare al primo utilizzo
     void Start()
     {
         initialRotation = transform.eulerAngles.y;
@@ -118,12 +119,26 @@ public class Door : MonoBehaviour, IInteractable
             {
                 "E' bloccata! Trova un modo per aprirla"
             });
+            objectiveStory.StartCoroutine(objectiveStory.updateTo8th());
             return;
         }
         if (firstUse && hasToUpdateObjective)
         {
-            objectiveStory.StartCoroutine(objectiveStory.updateTo5th());
-            firstUse = false; // Imposta il flag per evitare che venga eseguito di nuovo
+            switch (objectiveToUpdate)
+            {
+                case 0:
+                    objectiveStory.StartCoroutine(objectiveStory.updateTo5th());
+                    firstUse = false; // Imposta il flag per evitare che venga eseguito di nuovo
+                    break;
+                case 1:
+                    objectiveStory.StartCoroutine(objectiveStory.updateTo9th());
+                    firstUse = false; // Imposta il flag per evitare che venga eseguito di nuovo
+                    break;
+                case 2:
+                    objectiveStory.StartCoroutine(objectiveStory.updateTo11th());
+                    firstUse = false; // Imposta il flag per evitare che venga eseguito di nuovo
+                    break;
+            }
         }
         if (!isMoving)
         {

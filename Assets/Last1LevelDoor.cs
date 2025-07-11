@@ -16,6 +16,8 @@ public class Last1LevelDoor : MonoBehaviour, IInteractable
     private bool isOpen = false;   // Stato attuale della porta (aperta o chiusa)
     private float openingSpeed = 2.0f; // Velocità di apertura per porte scorrevoli
 
+    public ObjectiveStory objectiveStory; // Riferimento all'ObjectiveStory script
+
     public void Update()
     {
         if (!isMoving) return;
@@ -88,7 +90,7 @@ public class Last1LevelDoor : MonoBehaviour, IInteractable
                     "È chiusa… aspetta un attimo…C’è uno spazio qui… sembra fatto apposta per il tablet. Interessante. Fammi provare…",
                     "Funziona! La tavola... era la chiave. Finalmente"
                 });
-
+                objectiveStory.StartCoroutine(objectiveStory.updateTo7th());
                 isOpening = true;
                 isMoving = true;
             }

@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 90060fc1c6c75d3438bf5122fcf3e0ee
+guid: 62ecff25decded24cad4e9227a7fee4b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6575263046641538912
-    second: indietro_0
+      213: -1251696326148770594
+    second: ultimateTavola_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,12 +100,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: indietro_0
+      name: ultimateTavola_0
       rect:
         serializedVersion: 2
-        x: 7
+        x: 111
         y: 2
-        width: 1910
+        width: 1727
         height: 1068
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 06752d757e6004b50800000000000000
-      internalID: 6575263046641538912
+      spriteID: ed4bd39b2d411aee0800000000000000
+      internalID: -1251696326148770594
       vertices: []
       indices: 
       edges: []

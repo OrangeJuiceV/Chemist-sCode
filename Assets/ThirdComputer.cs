@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-
+using System.Collections.Generic;
 public class ThirdComputer : MonoBehaviour, IInteractable
 {
     public FirstPersonController fpc; // Reference to the FirstPersonController script
@@ -30,6 +30,8 @@ public class ThirdComputer : MonoBehaviour, IInteractable
 
     private bool imUsing = false; // Flag to check if the computer is being used    
     public Door doorToUnlock; // Reference to the door to unlock
+    public DialogueManager dialogueManager; // Reference to the DialogueManager
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -110,6 +112,9 @@ public class ThirdComputer : MonoBehaviour, IInteractable
         {
             Debug.Log("Correct answer!");
             doorToUnlock.isLocked = false; // Unlock the door if the answer is correct
+            imUsing = false; // Reset the flag
+            ExitInteraction();
+            dialogueManager.StartDialogue(new List<string> { "Accesso concesso. Una porta si è aperta" });
             // Handle correct answer logic here, e.g., unlock something or show a message
         }
         else
