@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 
-public class Last1LevelDoor : MonoBehaviour, IInteractable
+public class FinalDoor : MonoBehaviour, IInteractable
 {
     public DialogueManager dialogueManager;
     public GameObject container; // Ha 1 figlio con i 5 elementi
@@ -18,6 +18,7 @@ public class Last1LevelDoor : MonoBehaviour, IInteractable
 
     public ObjectiveStory objectiveStory; // Riferimento all'ObjectiveStory script
     public bool checkAll = false;
+    public bool isEnigmaSolved = false; // Per gestire lo stato dell'enigma
     public void Update()
     {
         if (!isMoving) return;
@@ -84,7 +85,7 @@ public class Last1LevelDoor : MonoBehaviour, IInteractable
 
         if (allElementsActive)
         {
-            if (isLocked)
+            if (isLocked || !isEnigmaSolved)
             {
                 isLocked = false;
                 dialogueManager.StartDialogue(new List<string> {
