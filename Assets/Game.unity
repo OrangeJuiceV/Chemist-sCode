@@ -20158,7 +20158,6 @@ MonoBehaviour:
   schermata: {fileID: 1712340550}
   fpc: {fileID: 1147224175}
   inputFields: {fileID: 1356004685}
-  door: {fileID: 0}
   cassaforte: {fileID: 2065112064}
 --- !u!114 &203929809
 MonoBehaviour:
@@ -33974,7 +33973,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &409698084
 RectTransform:
   m_ObjectHideFlags: 0
@@ -84213,7 +84212,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1081375953
 RectTransform:
   m_ObjectHideFlags: 0
@@ -91409,7 +91408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1207719014
 RectTransform:
   m_ObjectHideFlags: 0
@@ -107002,7 +107001,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1375714068
 RectTransform:
   m_ObjectHideFlags: 0
@@ -156726,7 +156725,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1860893698
 RectTransform:
   m_ObjectHideFlags: 0
