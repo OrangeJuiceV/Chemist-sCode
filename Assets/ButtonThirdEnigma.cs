@@ -7,6 +7,7 @@ public class ButtonThirdEnigma : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        AudioManager.PlayButtonSound(); // Riproduce il suono del click del bottone
         if (enigmaScript != null)
         {
             switch (sphereNumber)

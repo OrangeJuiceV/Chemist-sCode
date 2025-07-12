@@ -47,6 +47,7 @@ public class Bilanciamento : MonoBehaviour, IInteractable
             if (userValue != solution[i])
             {
                 Debug.Log("Soluzione sbagliata!");
+                AudioManager.PlayWrongAnswer(); // Play wrong answer sound
                 return;
             }
         }

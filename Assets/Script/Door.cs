@@ -24,6 +24,8 @@ public class Door : MonoBehaviour, IInteractable
     private bool firstUse = true; // Flag per tracciare il primo utilizzo
     public bool hasToUpdateObjective;
     public int objectiveToUpdate; // Obiettivo da aggiornare al primo utilizzo
+
+
     void Start()
     {
         initialRotation = transform.eulerAngles.y;
@@ -142,6 +144,10 @@ public class Door : MonoBehaviour, IInteractable
         }
         if (!isMoving)
         {
+            if (isSliding)
+                AudioManager.PlaySciFiDoor(); // Riproduce il suono della porta
+            else
+                AudioManager.PlayNormalDoor(); // Riproduce il suono della porta
             isMoving = true;
             Debug.Log((isOpen ? "Closing: " : "Opening: ") + gameObject.name);
         }

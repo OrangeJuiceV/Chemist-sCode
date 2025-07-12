@@ -47,6 +47,7 @@ public class ObjectiveStory : MonoBehaviour
 
     public IEnumerator updateTo2nd()
     {
+        AudioManager.PlayNewObjective(); // Riproduce il suono del nuovo obiettivo
         ObjectiveText.text = "Esplora la stanza";
         ObjectiveText.color = new Color(1.0f, 0.0f, 0.0f); // Rosso
         yield return new WaitForSeconds(3.0f);
@@ -55,6 +56,7 @@ public class ObjectiveStory : MonoBehaviour
 
     public IEnumerator updateTo3rd()
     {
+        AudioManager.PlayNewObjective(); // Riproduce il suono del nuovo obiettivo
         ObjectiveText.text = "Trova un codice per aprire la porta";
         ObjectiveText.color = new Color(1.0f, 0.0f, 0.0f); // Rosso
         yield return new WaitForSeconds(3.0f);
@@ -63,6 +65,7 @@ public class ObjectiveStory : MonoBehaviour
 
     public IEnumerator updateTo4th()
     {
+        AudioManager.PlayNewObjective(); // Riproduce il suono del nuovo obiettivo
         ObjectiveText.text = "Esplora il laboratorio";
         ObjectiveText.color = new Color(1.0f, 0.0f, 0.0f); // Rosso
         yield return new WaitForSeconds(3.0f);
@@ -71,6 +74,7 @@ public class ObjectiveStory : MonoBehaviour
 
     public IEnumerator updateTo5th()
     {
+        AudioManager.PlayNewObjective(); // Riproduce il suono del nuovo obiettivo
         ObjectiveText.text = "Trova un modo per aprire il cassetto";
         ObjectiveText.color = new Color(1.0f, 0.0f, 0.0f); // Rosso
         yield return new WaitForSeconds(3.0f);
@@ -79,6 +83,7 @@ public class ObjectiveStory : MonoBehaviour
 
     public IEnumerator updateTo6th()
     {
+        AudioManager.PlayNewObjective(); // Riproduce il suono del nuovo obiettivo
         ObjectiveText.text = "Trova un modo per aprire la grande porta";
         ObjectiveText.color = new Color(1.0f, 0.0f, 0.0f); // Rosso
         yield return new WaitForSeconds(3.0f);
@@ -87,6 +92,7 @@ public class ObjectiveStory : MonoBehaviour
 
     public IEnumerator updateTo7th()
     {
+        AudioManager.PlayNewObjective(); // Riproduce il suono del nuovo obiettivo
         ObjectiveText.text = "Esplora l’archivio";
         ObjectiveText.color = new Color(1.0f, 0.0f, 0.0f); // Rosso
         yield return new WaitForSeconds(3.0f);
@@ -95,6 +101,7 @@ public class ObjectiveStory : MonoBehaviour
 
     public IEnumerator updateTo8th()
     {
+        AudioManager.PlayNewObjective(); // Riproduce il suono del nuovo obiettivo
         ObjectiveText.text = "Trova un modo per aprire la porta";
         ObjectiveText.color = new Color(1.0f, 0.0f, 0.0f); // Rosso
         yield return new WaitForSeconds(3.0f);
@@ -103,6 +110,7 @@ public class ObjectiveStory : MonoBehaviour
 
     public IEnumerator updateTo9th()
     {
+        AudioManager.PlayNewObjective(); // Riproduce il suono del nuovo obiettivo
         ObjectiveText.text = "Risolvi l'enigma";
         ObjectiveText.color = new Color(1.0f, 0.0f, 0.0f); // Rosso
         yield return new WaitForSeconds(3.0f);
@@ -110,6 +118,7 @@ public class ObjectiveStory : MonoBehaviour
     }
 
     public IEnumerator updateTo10th() {
+        AudioManager.PlayNewObjective(); // Riproduce il suono del nuovo obiettivo
         ObjectiveText.text = "Esplora la prossima stanza";
         ObjectiveText.color = new Color(1.0f, 0.0f, 0.0f); // Rosso
         yield return new WaitForSeconds(3.0f);
@@ -117,6 +126,7 @@ public class ObjectiveStory : MonoBehaviour
     }
 
     public IEnumerator updateTo11th() {
+        AudioManager.PlayNewObjective(); // Riproduce il suono del nuovo obiettivo
         ObjectiveText.text = "Esplora la sala riunioni";
         ObjectiveText.color = new Color(1.0f, 0.0f, 0.0f); // Rosso
         yield return new WaitForSeconds(3.0f);
@@ -124,6 +134,7 @@ public class ObjectiveStory : MonoBehaviour
     }
 
     public IEnumerator updateTo12th() {
+        AudioManager.PlayNewObjective(); // Riproduce il suono del nuovo obiettivo
         ObjectiveText.text = "Trova un modo per aprire la cassaforte";
         ObjectiveText.color = new Color(1.0f, 0.0f, 0.0f); // Rosso
         yield return new WaitForSeconds(3.0f);
@@ -131,6 +142,7 @@ public class ObjectiveStory : MonoBehaviour
     }
     public IEnumerator updateTo13th()
     {
+        AudioManager.PlayNewObjective(); // Riproduce il suono del nuovo obiettivo
         ObjectiveText.text = "Sblocca l'ultima porta ed esci dal laboratorio";
         ObjectiveText.color = new Color(1.0f, 0.0f, 0.0f); // Rosso
         yield return new WaitForSeconds(3.0f);

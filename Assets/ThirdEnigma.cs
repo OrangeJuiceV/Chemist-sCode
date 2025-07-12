@@ -151,7 +151,7 @@ public class ThirdEnigma : MonoBehaviour
         else
         {
             Debug.Log("Soluzione sbagliata.");
-
+            AudioManager.PlayWrongAnswer();
             if (dialogueManager != null)
             {
                 dialogueManager.StartDialogue(new List<string> {

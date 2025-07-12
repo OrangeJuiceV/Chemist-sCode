@@ -9,7 +9,7 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        
+        AudioManager.PlayMainMenuMusic(); // Play the main menu music
     }
 
     // Update is called once per frame
@@ -41,6 +41,7 @@ public class MainMenu : MonoBehaviour
     }
     public void StartGame()
     {
+        AudioManager.StopMainMenuMusic(); // Stop the main menu music
         SceneManager.LoadScene("Game");
     }
 }

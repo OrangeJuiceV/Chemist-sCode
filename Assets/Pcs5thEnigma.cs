@@ -103,6 +103,7 @@ public class Pcs5thEnigma : MonoBehaviour
         });
             return; // niente CheckIfStable qui
         }
+        AudioManager.PlayButtonSound(); // Riproduce il suono del pulsante
 
         for (int i = 0; i < pivotAtom.transform.childCount; i++)
         {
@@ -132,7 +133,6 @@ public class Pcs5thEnigma : MonoBehaviour
             dialogueManager.StartDialogue(new List<string> { "Non posso spostare più di un elettrone per volta" });
             return;
         }
-
         GameObject pivotAtom = atom.transform.GetChild(0).gameObject;
 
         // Cerca se esiste almeno un elettrone attivo
@@ -159,6 +159,7 @@ public class Pcs5thEnigma : MonoBehaviour
             "non ha senso rimuovere un elettrone, toglierebbe un elettrone dal livello inferiore e diventerebbe instabile"
         });
         }
+        AudioManager.PlayButtonSound(); // Riproduce il suono del pulsante
 
         // In ogni caso, verifica la stabilità (dopo la rimozione vera o fittizia)
         CheckIfStable(atom);

@@ -91,12 +91,14 @@ public class Last1LevelDoor : MonoBehaviour, IInteractable
                     "È chiusa… aspetta un attimo…C’è uno spazio qui… sembra fatto apposta per il tablet. Interessante. Fammi provare…",
                     "Funziona! La tavola... era la chiave. Finalmente"
                 });
+                AudioManager.PlaySciFiDoor();
                 objectiveStory.StartCoroutine(objectiveStory.updateTo7th());
                 isOpening = true;
                 isMoving = true;
             }
             else
             {
+                AudioManager.PlaySciFiDoor();
                 isOpening = !isOpen;
                 isMoving = true;
             }

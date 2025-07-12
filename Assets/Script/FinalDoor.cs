@@ -16,38 +16,12 @@ public class FinalDoor : MonoBehaviour, IInteractable
     private bool isOpen = false;
     private float openingSpeed = 2.0f;
 
+    public GameObject finalCanva;
+    public FirstPersonController fpc; // Riferimento al controller del personaggio
+    public GameObject Objective; // Obiettivo finale da disattivare quando la porta si apre
     public void Update()
     {
-        if (!isMoving) return;
-
-        if (isOpening)
-        {
-            if (LeftDoor.transform.localPosition.z < LEFT_OPEN)
-            {
-                LeftDoor.transform.localPosition += new Vector3(0, 0, openingSpeed * Time.deltaTime);
-                RightDoor.transform.localPosition -= new Vector3(0, 0, openingSpeed * Time.deltaTime);
-            }
-            else
-            {
-                isMoving = false;
-                isOpen = true;
-                isOpening = false;
-            }
-        }
-        else
-        {
-            if (LeftDoor.transform.localPosition.z > LEFT_CLOSED)
-            {
-                LeftDoor.transform.localPosition -= new Vector3(0, 0, openingSpeed * Time.deltaTime);
-                RightDoor.transform.localPosition += new Vector3(0, 0, openingSpeed * Time.deltaTime);
-            }
-            else
-            {
-                isMoving = false;
-                isOpen = false;
-                isOpening = false;
-            }
-        }
+       
     }
 
     public void Interact()
@@ -90,8 +64,15 @@ public class FinalDoor : MonoBehaviour, IInteractable
             }
             else
             {
-                isOpening = !isOpen;
-                isMoving = true;
+                finalCanva.gameObject.SetActive(true);
+                AudioManager.PlayNewObjective();
+                Objective.SetActive(false); // Disattiva l'obiettivo finale
+                fpc.setIsWalking(false);
+                fpc.changeActive();
+                fpc.cameraCanMove = false;
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+                finalCanva.gameObject.SetActive(true);
             }
         }
         else

@@ -93,6 +93,7 @@ public class EnigmaOneDisplay : MonoBehaviour, IInteractable
         else
         {
             Debug.Log("Risposta errata.");
+            AudioManager.PlayWrongAnswer(); // Riproduce un suono di errore
             dialogueManager.StartDialogue(new List<string> { "Risposta errata, riprova." });
         }
     }
@@ -142,6 +143,6 @@ public class EnigmaOneDisplay : MonoBehaviour, IInteractable
 
         GameObject.FindFirstObjectByType<PauseMenu>().SetEscapeCooldown();
         if (!isSolved)
-            dialogueManager.StartDialogue(new List<string> { "Devo ricordare il codice" });
+            dialogueManager.StartDialogue(new List<string> { "Devo ricordare il codice, forse dovrei controllare la posizione di questi elementi sulla tavola." });
     }
 }

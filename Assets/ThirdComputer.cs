@@ -120,7 +120,7 @@ public class ThirdComputer : MonoBehaviour, IInteractable
         else
         {
             Debug.Log("Incorrect answer. Try again.");
-            
+            AudioManager.PlayWrongAnswer(); // Play wrong answer sound
             // Handle incorrect answer logic here, e.g., show an error message
         }
     }

@@ -167,6 +167,7 @@ public class Pc2ndEnigma : MonoBehaviour, IInteractable
         else
         {
             Debug.Log("Soluzione errata.");
+            AudioManager.PlayWrongAnswer();
             dialogueManager.StartDialogue(new List<string>
             {
                 "Mh... la soluzione non è questa."

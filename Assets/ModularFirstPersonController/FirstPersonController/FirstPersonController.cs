@@ -134,6 +134,10 @@ public class FirstPersonController : MonoBehaviour
 
     #endregion
 
+    public bool isPlayerWalking()
+    {
+        return isWalking;
+    }
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -206,7 +210,7 @@ public class FirstPersonController : MonoBehaviour
     private void Update()
     {
         #region Camera
-
+        AudioManager.PlaySteps(this);
         // Control camera movement
         if(cameraCanMove)
         {

@@ -63,6 +63,7 @@ public class FifthDoor : MonoBehaviour, IInteractable
         }
         else if (!isMoving)
         {
+            AudioManager.PlaySciFiDoor(); // Riproduce il suono della porta
             // Inizia l'apertura o la chiusura della porta
             isOpening = !isOpen; // Inverti lo stato di apertura
             isMoving = true; // Imposta lo stato di movimento
